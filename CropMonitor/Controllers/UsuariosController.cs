@@ -1,162 +1,146 @@
-﻿using BCrypt.Net; // For password hashing if updating password
-using CropMonitor.Data;
-using CropMonitor.Models;
+﻿using CropMonitor.Data;
+using CropMonitor.DTOs.Usuarios;
+using CropMonitor.Models.AppMovil; // Asegúrate de que este using apunte a tu modelo Usuario
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity; // Para PasswordHasher
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
+using System.Threading.Tasks;
 
 namespace CropMonitor.Controllers
 {
-    [Authorize] // Secure the Users controller
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     public class UsuariosController : ControllerBase
     {
-        private readonly CropMonitorContext _context;
+        private readonly CropMonitorDbContext _context;
+        private readonly IPasswordHasher<Usuario> _passwordHasher; // Para hashear y verificar contraseñas
 
-        public UsuariosController(CropMonitorContext context)
+        public UsuariosController(CropMonitorDbContext context, IPasswordHasher<Usuario> passwordHasher)
         {
             _context = context;
+            _passwordHasher = passwordHasher; // Asegúrate de registrar IPasswordHasher en Startup.cs
         }
 
-        // GET: api/Usuarios
-        [HttpGet]
-        [Authorize(Roles = "Administrador")] // Only Admins can list all users
-        public async Task<ActionResult<IEnumerable<Usuario>>> GetUsuarios()
+        /// <summary>
+        /// Obtiene el perfil del usuario autenticado.
+        /// (Para mostrar Correo electrónico y Nombre de usuario)
+        /// </summary>
+        [HttpGet("me")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(UsuarioProfileDto))]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)] // En caso de que el usuario no se encuentre (raro con Authorize)
+        public async Task<IActionResult> GetCurrentUserProfile()
         {
-            return await _context.Usuarios.ToListAsync();
-        }
-
-        // GET: api/Usuarios/5
-        [HttpGet("{id}")]
-        [Authorize(Roles = "Administrador,Propietario,Regular")] // Admins can see any, users can see their own
-        public async Task<ActionResult<Usuario>> GetUsuario(int id)
-        {
-            // For a regular user, ensure they can only access their own profile
-            if (User.IsInRole("Regular") || User.IsInRole("Propietario"))
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
             {
-                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                if (userIdClaim == null || int.Parse(userIdClaim) != id)
-                {
-                    return Forbid("You are not authorized to access this user's data.");
-                }
+                return Unauthorized("No se pudo identificar al usuario autenticado.");
             }
 
-            var usuario = await _context.Usuarios.FindAsync(id);
+            var usuario = await _context.Usuarios.FindAsync(userId);
 
             if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario no encontrado.");
             }
 
-            // Do not return hashed password in API response
-            usuario.Contrasena = null;
-            return usuario;
+            var userProfileDto = new UsuarioProfileDto
+            {
+                UsuarioID = usuario.UsuarioID,
+                NombreUsuario = usuario.Nombre, // Asume que tienes esta propiedad en tu modelo Usuario
+                Correo = usuario.Correo
+                // Si tuvieras un campo de Google Login en Usuario, lo asignarías aquí
+                // RegistradoConGoogle = usuario.RegistradoConGoogle
+            };
+
+            return Ok(userProfileDto);
         }
 
-        // PUT: api/Usuarios/5
-        [HttpPut("{id}")]
-        [Authorize(Roles = "Administrador,Propietario,Regular")]
-        public async Task<IActionResult> PutUsuario(int id, Usuario usuario)
+        /// <summary>
+        /// Permite al usuario autenticado cambiar su contraseña.
+        /// (Para la sección de Contraseña)
+        /// </summary>
+        /// <param name="changePasswordDto">DTO con la contraseña actual y la nueva contraseña.</param>
+        [HttpPut("me/password")]
+        [ProducesResponseType(StatusCodes.Status200OK, Type = typeof(string))]
+        [ProducesResponseType(StatusCodes.Status400BadRequest)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        public async Task<IActionResult> ChangePassword([FromBody] ChangePasswordDto changePasswordDto)
         {
-            if (id != usuario.IdUsuario)
+            if (!ModelState.IsValid)
             {
-                return BadRequest();
+                return BadRequest(ModelState);
             }
 
-            // For a regular user, ensure they can only update their own profile
-            if (User.IsInRole("Regular") || User.IsInRole("Propietario"))
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
             {
-                var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
-                if (userIdClaim == null || int.Parse(userIdClaim) != id)
-                {
-                    return Forbid("You are not authorized to update this user's data.");
-                }
+                return Unauthorized("No se pudo identificar al usuario autenticado.");
             }
 
-            var existingUser = await _context.Usuarios.AsNoTracking().SingleOrDefaultAsync(u => u.IdUsuario == id);
-            if (existingUser == null)
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            if (usuario == null)
             {
-                return NotFound();
+                return NotFound("Usuario no encontrado.");
             }
 
-            // Only update fields that are allowed for modification
-            existingUser.Nombre = usuario.Nombre;
-            existingUser.Correo = usuario.Correo;
-            // Only update password if provided and different
-            if (!string.IsNullOrEmpty(usuario.Contrasena) && !BCrypt.Net.BCrypt.Verify(usuario.Contrasena, existingUser.Contrasena))
+            // Verificar la contraseña actual
+            var passwordVerificationResult = _passwordHasher.VerifyHashedPassword(usuario, usuario.ContrasenaHash, changePasswordDto.CurrentPassword);
+
+            if (passwordVerificationResult == PasswordVerificationResult.Failed)
             {
-                existingUser.Contrasena = BCrypt.Net.BCrypt.HashPassword(usuario.Contrasena);
+                return BadRequest("La contraseña actual es incorrecta.");
             }
 
-            // Admin can update Type and Role
-            if (User.IsInRole("Administrador"))
-            {
-                existingUser.Tipo = usuario.Tipo;
-                existingUser.Rol = usuario.Rol;
-            }
+            // Hashear la nueva contraseña y actualizar
+            usuario.ContrasenaHash = _passwordHasher.HashPassword(usuario, changePasswordDto.NewPassword);
 
-            _context.Entry(existingUser).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UsuarioExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
-        }
-
-        // POST: api/Usuarios
-        [HttpPost]
-        [AllowAnonymous] // Allow public registration, or [Authorize(Roles = "Administrador")] if only admin can create
-        public async Task<ActionResult<Usuario>> PostUsuario(Usuario usuario)
-        {
-            if (await _context.Usuarios.AnyAsync(u => u.Correo == usuario.Correo))
-            {
-                return Conflict("User with this email already exists.");
-            }
-
-            usuario.Contrasena = BCrypt.Net.BCrypt.HashPassword(usuario.Contrasena);
-            _context.Usuarios.Add(usuario);
             await _context.SaveChangesAsync();
 
-            // Do not return hashed password
-            usuario.Contrasena = null;
-            return CreatedAtAction("GetUsuario", new { id = usuario.IdUsuario }, usuario);
+            return Ok("Contraseña actualizada exitosamente.");
         }
 
-        // DELETE: api/Usuarios/5
-        [HttpDelete("{id}")]
-        [Authorize(Roles = "Administrador")] // Only Admins can delete users
-        public async Task<IActionResult> DeleteUsuario(int id)
+        /// <summary>
+        /// Permite al usuario autenticado eliminar su cuenta.
+        /// (Para el botón "Eliminar cuenta")
+        /// </summary>
+        /// <remarks>
+        /// **¡ADVERTENCIA!** Eliminar un usuario puede tener implicaciones en cascada.
+        /// Asegúrate de que las relaciones en tu base de datos están configuradas con `OnDelete`
+        /// apropiado (CASCADE, SET NULL, o RESTRICT y manejar manualmente)
+        /// para todos los datos relacionados (Favoritos, Modulos, LecturasSensores, Notificaciones, etc.).
+        /// Considera implementar una "eliminación suave" (soft delete) marcando el usuario como inactivo
+        /// en lugar de una eliminación física, si la integridad de los datos históricos es importante.
+        /// </remarks>
+        [HttpDelete("me")]
+        [ProducesResponseType(StatusCodes.Status204NoContent)]
+        [ProducesResponseType(StatusCodes.Status401Unauthorized)]
+        [ProducesResponseType(StatusCodes.Status404NotFound)]
+        [ProducesResponseType(StatusCodes.Status400BadRequest, Type = typeof(string))] // En caso de errores por restricciones de FK
+        public async Task<IActionResult> DeleteAccount()
         {
-            var usuario = await _context.Usuarios.FindAsync(id);
-            if (usuario == null)
+            var userIdClaim = User.FindFirst(ClaimTypes.NameIdentifier);
+            if (userIdClaim == null || !int.TryParse(userIdClaim.Value, out int userId))
             {
-                return NotFound();
+                return Unauthorized("No se pudo identificar al usuario autenticado.");
             }
 
+            var usuario = await _context.Usuarios.FindAsync(userId);
+            if (usuario == null)
+            {
+                return NotFound("Usuario no encontrado.");
+            }
+
+            // Entity Framework Core, al detectar el OnDelete(DeleteBehavior.Cascade) configurado
+            // en OnModelCreating y aplicado a la BD, se encargará de eliminar los registros relacionados.
             _context.Usuarios.Remove(usuario);
-            await _context.SaveChangesAsync();
+            await _context.SaveChangesAsync(); // Esto es lo que activa la eliminación en cascada en la DB
 
             return NoContent();
-        }
-
-        private bool UsuarioExists(int id)
-        {
-            return _context.Usuarios.Any(e => e.IdUsuario == id);
         }
     }
 }

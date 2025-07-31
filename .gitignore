@@ -1,0 +1,27 @@
+# Visual Studio
+.vs/
+*.suo
+*.user
+*.csproj.user
+*.vspscc
+*.vssscc
+*.bak
+*.pdb
+*.obj
+*.exe
+*.dll
+# Binaries
+[Bb]in/
+[Oo]bj/
+# NuGet
+.nuget/
+packages/
+# Npm
+node_modules/
+# Other common files to ignore
+# Logs
+*.log
+# Temporary files
+*~
+# Rider (if using JetBrains Rider)
+.idea/

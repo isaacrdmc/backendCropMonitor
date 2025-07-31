@@ -8,12 +8,40 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "CropMonitor.Controllers.LoginRequest",
+        "Name": "loginRequest",
+        "Type": "CropMonitor.DTOs.Auth.LoginRequestDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitorApi.DTOs.Auth.LoginResponseDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
   },
   {
     "ContainingType": "CropMonitor.Controllers.AuthController",
@@ -24,63 +52,191 @@
     "Order": 0,
     "Parameters": [
       {
-        "Name": "request",
-        "Type": "CropMonitor.Controllers.RegisterRequest",
+        "Name": "registerRequest",
+        "Type": "CropMonitor.DTOs.Auth.RegisterRequestDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ComentariosController",
-    "Method": "GetComentarios",
-    "RelativePath": "api/Comentarios",
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "GetCultivos",
+    "RelativePath": "api/Cultivos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
-    "Parameters": [],
+    "Parameters": [
+      {
+        "Name": "temporadaId",
+        "Type": "System.Nullable\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
+      },
+      {
+        "Name": "searchText",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.Comentario, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.DTOs.Cultivos.CultivoListDto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ComentariosController",
-    "Method": "PostComentario",
-    "RelativePath": "api/Comentarios",
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "CreateCultivo",
+    "RelativePath": "api/Cultivos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "comentario",
-        "Type": "CropMonitor.Models.Comentario",
-        "IsRequired": true
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImagenFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequisitosClima",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequisitosAgua",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequisitosLuz",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TemporadaIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CropMonitor.Models.Comentario",
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ComentariosController",
-    "Method": "GetComentario",
-    "RelativePath": "api/Comentarios/{id}",
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "ToggleFavorito",
+    "RelativePath": "api/Cultivos/{cultivoId}/toggle-favorito",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "cultivoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "GetCultivoById",
+    "RelativePath": "api/Cultivos/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -93,20 +249,38 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CropMonitor.Models.Comentario",
+        "Type": "CropMonitor.DTOs.Cultivos.CultivoDetailDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ComentariosController",
-    "Method": "PutComentario",
-    "RelativePath": "api/Comentarios/{id}",
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "UpdateCultivo",
+    "RelativePath": "api/Cultivos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -117,17 +291,80 @@
         "IsRequired": true
       },
       {
-        "Name": "comentario",
-        "Type": "CropMonitor.Models.Comentario",
-        "IsRequired": true
+        "Name": "Nombre",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "Descripcion",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "ImagenFile",
+        "Type": "Microsoft.AspNetCore.Http.IFormFile",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequisitosClima",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequisitosAgua",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "RequisitosLuz",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "TemporadaIDs",
+        "Type": "System.Collections.Generic.List\u00601[[System.Int32, System.Private.CoreLib, Version=9.0.0.0, Culture=neutral, PublicKeyToken=7cec85d7bea7798e]]",
+        "IsRequired": false
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ComentariosController",
-    "Method": "DeleteComentario",
-    "RelativePath": "api/Comentarios/{id}",
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "DeleteCultivo",
+    "RelativePath": "api/Cultivos/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -138,245 +375,64 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.ComentariosController",
-    "Method": "LikeComentario",
-    "RelativePath": "api/Comentarios/{id}/like",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+    "ReturnTypes": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
-    ],
-    "ReturnTypes": []
+    ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.EstadisticasController",
-    "Method": "GetEstadisticas",
-    "RelativePath": "api/Estadisticas",
+    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "Method": "GetCultivosFavoritos",
+    "RelativePath": "api/Cultivos/Favoritos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.Estadistica, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.DTOs.Cultivos.CultivoListDto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.EstadisticasController",
-    "Method": "PostEstadistica",
-    "RelativePath": "api/Estadisticas",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "estadistica",
-        "Type": "CropMonitor.Models.Estadistica",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CropMonitor.Models.Estadistica",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.EstadisticasController",
-    "Method": "GetEstadistica",
-    "RelativePath": "api/Estadisticas/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CropMonitor.Models.Estadistica",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.EstadisticasController",
-    "Method": "PutEstadistica",
-    "RelativePath": "api/Estadisticas/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
       },
       {
-        "Name": "estadistica",
-        "Type": "CropMonitor.Models.Estadistica",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.EstadisticasController",
-    "Method": "DeleteEstadistica",
-    "RelativePath": "api/Estadisticas/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.GuiasController",
-    "Method": "GetGuias",
-    "RelativePath": "api/Guias",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [],
-    "ReturnTypes": [
-      {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.Guia, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 401
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.GuiasController",
-    "Method": "PostGuia",
-    "RelativePath": "api/Guias",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "guia",
-        "Type": "CropMonitor.Models.Guia",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CropMonitor.Models.Guia",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.GuiasController",
-    "Method": "GetGuia",
-    "RelativePath": "api/Guias/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CropMonitor.Models.Guia",
-        "MediaTypes": [
-          "text/plain",
-          "application/json",
-          "text/json"
-        ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.GuiasController",
-    "Method": "PutGuia",
-    "RelativePath": "api/Guias/{id}",
-    "HttpMethod": "PUT",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      },
-      {
-        "Name": "guia",
-        "Type": "CropMonitor.Models.Guia",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.GuiasController",
-    "Method": "DeleteGuia",
-    "RelativePath": "api/Guias/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.ModulosController",
-    "Method": "GetModulos",
+    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "Method": "GetModulosUsuario",
     "RelativePath": "api/Modulos",
     "HttpMethod": "GET",
     "IsController": true,
@@ -384,116 +440,281 @@
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.Modulo, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.DTOs.Modulos.ModuloListDto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ModulosController",
-    "Method": "PostModulo",
+    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "Method": "CreateModulo",
     "RelativePath": "api/Modulos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "modulo",
-        "Type": "CropMonitor.Models.Modulo",
+        "Name": "moduloDto",
+        "Type": "CropMonitor.DTOs.Modulos.ModuloCreateDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CropMonitor.Models.Modulo",
+        "Type": "CropMonitor.DTOs.Modulos.ModuloListDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.ModulosController",
-    "Method": "GetModulo",
-    "RelativePath": "api/Modulos/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+        "StatusCode": 201
+      },
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CropMonitor.Models.Modulo",
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.ModulosController",
-    "Method": "PutModulo",
-    "RelativePath": "api/Modulos/{id}",
+    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "Method": "AsignarCultivoAMedidorSlot",
+    "RelativePath": "api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/asignar-cultivo/{cultivoId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
+        "Name": "moduloId",
         "Type": "System.Int32",
         "IsRequired": true
       },
       {
-        "Name": "modulo",
-        "Type": "CropMonitor.Models.Modulo",
+        "Name": "medidorSlotIndex",
+        "Type": "System.Int32",
         "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.ModulosController",
-    "Method": "DeleteModulo",
-    "RelativePath": "api/Modulos/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+      },
       {
-        "Name": "id",
+        "Name": "cultivoId",
         "Type": "System.Int32",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.PlantasController",
-    "Method": "GetPlantas",
-    "RelativePath": "api/Plantas",
+    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "Method": "DesasignarCultivoDeMedidorSlot",
+    "RelativePath": "api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/desasignar-cultivo",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "moduloId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "medidorSlotIndex",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "Method": "GetSensoresByModulo",
+    "RelativePath": "api/Modulos/{moduloId}/sensores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "moduloId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.DTOs.Sensores.SensorInModuloDto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "Method": "GetSensorDetail",
+    "RelativePath": "api/Modulos/sensores/{sensorId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "sensorId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.DTOs.Sensores.SensorDetailDto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "Method": "GetRecetas",
+    "RelativePath": "api/Recetas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.Planta, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.DTOs.Recetas.RecetaListDto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
         "MediaTypes": [
           "text/plain",
           "application/json",
@@ -504,35 +725,44 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.PlantasController",
-    "Method": "PostPlanta",
-    "RelativePath": "api/Plantas",
+    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "Method": "CreateReceta",
+    "RelativePath": "api/Recetas",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "planta",
-        "Type": "CropMonitor.Models.Planta",
+        "Name": "recetaDto",
+        "Type": "CropMonitor.DTOs.Recetas.RecetaCreateDto",
         "IsRequired": true
       }
     ],
     "ReturnTypes": [
       {
-        "Type": "CropMonitor.Models.Planta",
+        "Type": "CropMonitor.DTOs.Recetas.RecetaDetailDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 201
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.PlantasController",
-    "Method": "GetPlanta",
-    "RelativePath": "api/Plantas/{id}",
+    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "Method": "GetReceta",
+    "RelativePath": "api/Recetas/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -545,20 +775,29 @@
     ],
     "ReturnTypes": [
       {
-        "Type": "CropMonitor.Models.Planta",
+        "Type": "CropMonitor.DTOs.Recetas.RecetaDetailDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.PlantasController",
-    "Method": "PutPlanta",
-    "RelativePath": "api/Plantas/{id}",
+    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "Method": "UpdateReceta",
+    "RelativePath": "api/Recetas/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -569,17 +808,41 @@
         "IsRequired": true
       },
       {
-        "Name": "planta",
-        "Type": "CropMonitor.Models.Planta",
+        "Name": "recetaDto",
+        "Type": "CropMonitor.DTOs.Recetas.RecetaUpdateDto",
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.PlantasController",
-    "Method": "DeletePlanta",
-    "RelativePath": "api/Plantas/{id}",
+    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "Method": "DeleteReceta",
+    "RelativePath": "api/Recetas/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -590,115 +853,181 @@
         "IsRequired": true
       }
     ],
-    "ReturnTypes": []
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "Method": "SearchRecetas",
+    "RelativePath": "api/Recetas/search",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "query",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.DTOs.Recetas.RecetaListDto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
   },
   {
     "ContainingType": "CropMonitor.Controllers.UsuariosController",
-    "Method": "GetUsuarios",
-    "RelativePath": "api/Usuarios",
+    "Method": "GetCurrentUserProfile",
+    "RelativePath": "api/Usuarios/me",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
     "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.Usuario, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "Type": "CropMonitor.DTOs.Usuarios.UsuarioProfileDto",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
         "StatusCode": 200
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
     ]
   },
   {
     "ContainingType": "CropMonitor.Controllers.UsuariosController",
-    "Method": "PostUsuario",
-    "RelativePath": "api/Usuarios",
-    "HttpMethod": "POST",
+    "Method": "DeleteAccount",
+    "RelativePath": "api/Usuarios/me",
+    "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
-    "Parameters": [
-      {
-        "Name": "usuario",
-        "Type": "CropMonitor.Models.Usuario",
-        "IsRequired": true
-      }
-    ],
+    "Parameters": [],
     "ReturnTypes": [
       {
-        "Type": "CropMonitor.Models.Usuario",
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 204
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
-      }
-    ]
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.UsuariosController",
-    "Method": "GetUsuario",
-    "RelativePath": "api/Usuarios/{id}",
-    "HttpMethod": "GET",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+        "StatusCode": 401
+      },
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": [
-      {
-        "Type": "CropMonitor.Models.Usuario",
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
         "MediaTypes": [
           "text/plain",
           "application/json",
           "text/json"
         ],
-        "StatusCode": 200
+        "StatusCode": 404
+      },
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
       }
     ]
   },
   {
     "ContainingType": "CropMonitor.Controllers.UsuariosController",
-    "Method": "PutUsuario",
-    "RelativePath": "api/Usuarios/{id}",
+    "Method": "ChangePassword",
+    "RelativePath": "api/Usuarios/me/password",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "id",
-        "Type": "System.Int32",
+        "Name": "changePasswordDto",
+        "Type": "CropMonitor.DTOs.Usuarios.ChangePasswordDto",
         "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.String",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       },
       {
-        "Name": "usuario",
-        "Type": "CropMonitor.Models.Usuario",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "CropMonitor.Controllers.UsuariosController",
-    "Method": "DeleteUsuario",
-    "RelativePath": "api/Usuarios/{id}",
-    "HttpMethod": "DELETE",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 400
+      },
       {
-        "Name": "id",
-        "Type": "System.Int32",
-        "IsRequired": true
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 401
+      },
+      {
+        "Type": "Microsoft.AspNetCore.Mvc.ProblemDetails",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 404
       }
-    ],
-    "ReturnTypes": []
+    ]
   }
 ]

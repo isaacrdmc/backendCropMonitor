@@ -169,3 +169,5 @@ C:\Users\pezca\source\repos\CropMonitor\CropMonitor\obj\Debug\net9.0\refint\Crop
 C:\Users\pezca\source\repos\CropMonitor\CropMonitor\obj\Debug\net9.0\CropMonitor.pdb
 C:\Users\pezca\source\repos\CropMonitor\CropMonitor\obj\Debug\net9.0\CropMonitor.genruntimeconfig.cache
 C:\Users\pezca\source\repos\CropMonitor\CropMonitor\obj\Debug\net9.0\ref\CropMonitor.dll
+C:\Users\pezca\source\repos\CropMonitor\CropMonitor\obj\Debug\net9.0\CropMonitor.sourcelink.json
+C:\Users\pezca\source\repos\CropMonitor\CropMonitor\bin\Debug\net9.0\CropMonitor.staticwebassets.runtime.json

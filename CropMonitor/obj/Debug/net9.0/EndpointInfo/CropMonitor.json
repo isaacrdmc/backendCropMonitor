@@ -1,7 +1,7 @@
 {
   "openapi": "3.0.4",
   "info": {
-    "title": "CropMonitor API",
+    "title": "Crop Monitor API",
     "version": "v1"
   },
   "paths": {
@@ -14,17 +14,17 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
+                "$ref": "#/components/schemas/RegisterRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
+                "$ref": "#/components/schemas/RegisterRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/RegisterRequest"
+                "$ref": "#/components/schemas/RegisterRequestDto"
               }
             }
           }
@@ -32,6 +32,26 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -45,32 +65,106 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "$ref": "#/components/schemas/LoginRequestDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "$ref": "#/components/schemas/LoginRequestDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/LoginRequest"
+                "$ref": "#/components/schemas/LoginRequestDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/LoginResponseDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Comentarios": {
+    "/api/Cultivos": {
       "get": {
         "tags": [
-          "Comentarios"
+          "Cultivos"
+        ],
+        "parameters": [
+          {
+            "name": "temporadaId",
+            "in": "query",
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "searchText",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
         ],
         "responses": {
           "200": {
@@ -80,7 +174,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Comentario"
+                    "$ref": "#/components/schemas/CultivoListDto"
                   }
                 }
               },
@@ -88,7 +182,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Comentario"
+                    "$ref": "#/components/schemas/CultivoListDto"
                   }
                 }
               },
@@ -96,8 +190,28 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Comentario"
+                    "$ref": "#/components/schemas/CultivoListDto"
                   }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -106,44 +220,119 @@
       },
       "post": {
         "tags": [
-          "Comentarios"
+          "Cultivos"
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Comentario"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Comentario"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Comentario"
+                "required": [
+                  "Nombre"
+                ],
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Descripcion": {
+                    "type": "string"
+                  },
+                  "ImagenFile": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "RequisitosClima": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "RequisitosAgua": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "RequisitosLuz": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "TemporadaIDs": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                },
+                "ImagenFile": {
+                  "style": "form"
+                },
+                "RequisitosClima": {
+                  "style": "form"
+                },
+                "RequisitosAgua": {
+                  "style": "form"
+                },
+                "RequisitosLuz": {
+                  "style": "form"
+                },
+                "TemporadaIDs": {
+                  "style": "form"
+                }
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created"
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comentario"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comentario"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comentario"
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -151,10 +340,68 @@
         }
       }
     },
-    "/api/Comentarios/{id}": {
+    "/api/Cultivos/Favoritos": {
       "get": {
         "tags": [
-          "Comentarios"
+          "Cultivos"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CultivoListDto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CultivoListDto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/CultivoListDto"
+                  }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Cultivos/{id}": {
+      "get": {
+        "tags": [
+          "Cultivos"
         ],
         "parameters": [
           {
@@ -173,17 +420,57 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comentario"
+                  "$ref": "#/components/schemas/CultivoDetailDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comentario"
+                  "$ref": "#/components/schemas/CultivoDetailDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Comentario"
+                  "$ref": "#/components/schemas/CultivoDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -192,7 +479,7 @@
       },
       "put": {
         "tags": [
-          "Comentarios"
+          "Cultivos"
         ],
         "parameters": [
           {
@@ -207,19 +494,71 @@
         ],
         "requestBody": {
           "content": {
-            "application/json": {
+            "multipart/form-data": {
               "schema": {
-                "$ref": "#/components/schemas/Comentario"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Comentario"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Comentario"
+                "required": [
+                  "Nombre"
+                ],
+                "type": "object",
+                "properties": {
+                  "Nombre": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "Descripcion": {
+                    "type": "string"
+                  },
+                  "ImagenFile": {
+                    "type": "string",
+                    "format": "binary"
+                  },
+                  "RequisitosClima": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "RequisitosAgua": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "RequisitosLuz": {
+                    "maxLength": 255,
+                    "minLength": 0,
+                    "type": "string"
+                  },
+                  "TemporadaIDs": {
+                    "type": "array",
+                    "items": {
+                      "type": "integer",
+                      "format": "int32"
+                    }
+                  }
+                }
+              },
+              "encoding": {
+                "Nombre": {
+                  "style": "form"
+                },
+                "Descripcion": {
+                  "style": "form"
+                },
+                "ImagenFile": {
+                  "style": "form"
+                },
+                "RequisitosClima": {
+                  "style": "form"
+                },
+                "RequisitosAgua": {
+                  "style": "form"
+                },
+                "RequisitosLuz": {
+                  "style": "form"
+                },
+                "TemporadaIDs": {
+                  "style": "form"
+                }
               }
             }
           }
@@ -227,12 +566,72 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "tags": [
-          "Comentarios"
+          "Cultivos"
         ],
         "parameters": [
           {
@@ -246,20 +645,60 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Comentarios/{id}/like": {
+    "/api/Cultivos/{cultivoId}/toggle-favorito": {
       "post": {
         "tags": [
-          "Comentarios"
+          "Cultivos"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "cultivoId",
             "in": "path",
             "required": true,
             "schema": {
@@ -271,376 +710,66 @@
         "responses": {
           "200": {
             "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Estadisticas": {
-      "get": {
-        "tags": [
-          "Estadisticas"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Estadistica"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Estadistica"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Estadistica"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Estadisticas"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Estadistica"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Estadistica"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Estadistica"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
+          },
+          "401": {
+            "description": "Unauthorized",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Estadistica"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Estadistica"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Estadistica"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
-          }
-        }
-      }
-    },
-    "/api/Estadisticas/{id}": {
-      "get": {
-        "tags": [
-          "Estadisticas"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
+          },
+          "400": {
+            "description": "Bad Request",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Estadistica"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Estadistica"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Estadistica"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Estadisticas"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Estadistica"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Estadistica"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Estadistica"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Estadisticas"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Guias": {
-      "get": {
-        "tags": [
-          "Guias"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Guia"
-                  }
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Guia"
-                  }
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Guia"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Guias"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Guia"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Guia"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Guia"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guia"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guia"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guia"
-                }
-              }
-            }
-          }
-        }
-      }
-    },
-    "/api/Guias/{id}": {
-      "get": {
-        "tags": [
-          "Guias"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guia"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guia"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Guia"
-                }
-              }
-            }
-          }
-        }
-      },
-      "put": {
-        "tags": [
-          "Guias"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Guia"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Guia"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Guia"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Guias"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
           }
         }
       }
@@ -658,7 +787,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Modulo"
+                    "$ref": "#/components/schemas/ModuloListDto"
                   }
                 }
               },
@@ -666,7 +795,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Modulo"
+                    "$ref": "#/components/schemas/ModuloListDto"
                   }
                 }
               },
@@ -674,8 +803,28 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Modulo"
+                    "$ref": "#/components/schemas/ModuloListDto"
                   }
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -690,38 +839,78 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Modulo"
+                "$ref": "#/components/schemas/ModuloCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Modulo"
+                "$ref": "#/components/schemas/ModuloCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Modulo"
+                "$ref": "#/components/schemas/ModuloCreateDto"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Modulo"
+                  "$ref": "#/components/schemas/ModuloListDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Modulo"
+                  "$ref": "#/components/schemas/ModuloListDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Modulo"
+                  "$ref": "#/components/schemas/ModuloListDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -729,14 +918,14 @@
         }
       }
     },
-    "/api/Modulos/{id}": {
+    "/api/Modulos/{moduloId}/sensores": {
       "get": {
         "tags": [
           "Modulos"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "moduloId",
             "in": "path",
             "required": true,
             "schema": {
@@ -751,30 +940,179 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Modulo"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SensorInModuloDto"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Modulo"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SensorInModuloDto"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Modulo"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/SensorInModuloDto"
+                  }
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
           }
         }
-      },
+      }
+    },
+    "/api/Modulos/sensores/{sensorId}": {
+      "get": {
+        "tags": [
+          "Modulos"
+        ],
+        "parameters": [
+          {
+            "name": "sensorId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorDetailDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorDetailDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/SensorDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/asignar-cultivo/{cultivoId}": {
       "put": {
         "tags": [
           "Modulos"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "moduloId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "medidorSlotIndex",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "cultivoId",
             "in": "path",
             "required": true,
             "schema": {
@@ -783,38 +1121,90 @@
             }
           }
         ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Modulo"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Modulo"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Modulo"
-              }
-            }
-          }
-        },
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
-      },
-      "delete": {
+      }
+    },
+    "/api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/desasignar-cultivo": {
+      "put": {
         "tags": [
           "Modulos"
         ],
         "parameters": [
           {
-            "name": "id",
+            "name": "moduloId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          },
+          {
+            "name": "medidorSlotIndex",
             "in": "path",
             "required": true,
             "schema": {
@@ -826,14 +1216,74 @@
         "responses": {
           "200": {
             "description": "OK"
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
     },
-    "/api/Plantas": {
+    "/api/Recetas": {
       "get": {
         "tags": [
-          "Plantas"
+          "Recetas"
         ],
         "responses": {
           "200": {
@@ -843,7 +1293,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Planta"
+                    "$ref": "#/components/schemas/RecetaListDto"
                   }
                 }
               },
@@ -851,7 +1301,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Planta"
+                    "$ref": "#/components/schemas/RecetaListDto"
                   }
                 }
               },
@@ -859,7 +1309,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/Planta"
+                    "$ref": "#/components/schemas/RecetaListDto"
                   }
                 }
               }
@@ -869,44 +1319,64 @@
       },
       "post": {
         "tags": [
-          "Plantas"
+          "Recetas"
         ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Planta"
+                "$ref": "#/components/schemas/RecetaCreateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Planta"
+                "$ref": "#/components/schemas/RecetaCreateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Planta"
+                "$ref": "#/components/schemas/RecetaCreateDto"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK",
+          "201": {
+            "description": "Created",
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Planta"
+                  "$ref": "#/components/schemas/RecetaDetailDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Planta"
+                  "$ref": "#/components/schemas/RecetaDetailDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Planta"
+                  "$ref": "#/components/schemas/RecetaDetailDto"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -914,10 +1384,10 @@
         }
       }
     },
-    "/api/Plantas/{id}": {
+    "/api/Recetas/{id}": {
       "get": {
         "tags": [
-          "Plantas"
+          "Recetas"
         ],
         "parameters": [
           {
@@ -936,17 +1406,37 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Planta"
+                  "$ref": "#/components/schemas/RecetaDetailDto"
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Planta"
+                  "$ref": "#/components/schemas/RecetaDetailDto"
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Planta"
+                  "$ref": "#/components/schemas/RecetaDetailDto"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -955,7 +1445,7 @@
       },
       "put": {
         "tags": [
-          "Plantas"
+          "Recetas"
         ],
         "parameters": [
           {
@@ -972,30 +1462,70 @@
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Planta"
+                "$ref": "#/components/schemas/RecetaUpdateDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Planta"
+                "$ref": "#/components/schemas/RecetaUpdateDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Planta"
+                "$ref": "#/components/schemas/RecetaUpdateDto"
               }
             }
           }
         },
         "responses": {
-          "200": {
-            "description": "OK"
+          "204": {
+            "description": "No Content"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       },
       "delete": {
         "tags": [
-          "Plantas"
+          "Recetas"
         ],
         "parameters": [
           {
@@ -1009,89 +1539,25 @@
           }
         ],
         "responses": {
-          "200": {
-            "description": "OK"
-          }
-        }
-      }
-    },
-    "/api/Usuarios": {
-      "get": {
-        "tags": [
-          "Usuarios"
-        ],
-        "responses": {
-          "200": {
-            "description": "OK",
+          "204": {
+            "description": "No Content"
+          },
+          "404": {
+            "description": "Not Found",
             "content": {
               "text/plain": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Usuario"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "application/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Usuario"
-                  }
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               },
               "text/json": {
                 "schema": {
-                  "type": "array",
-                  "items": {
-                    "$ref": "#/components/schemas/Usuario"
-                  }
-                }
-              }
-            }
-          }
-        }
-      },
-      "post": {
-        "tags": [
-          "Usuarios"
-        ],
-        "requestBody": {
-          "content": {
-            "application/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Usuario"
-              }
-            },
-            "text/json": {
-              "schema": {
-                "$ref": "#/components/schemas/Usuario"
-              }
-            },
-            "application/*+json": {
-              "schema": {
-                "$ref": "#/components/schemas/Usuario"
-              }
-            }
-          }
-        },
-        "responses": {
-          "200": {
-            "description": "OK",
-            "content": {
-              "text/plain": {
-                "schema": {
-                  "$ref": "#/components/schemas/Usuario"
-                }
-              },
-              "application/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Usuario"
-                }
-              },
-              "text/json": {
-                "schema": {
-                  "$ref": "#/components/schemas/Usuario"
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
@@ -1099,19 +1565,17 @@
         }
       }
     },
-    "/api/Usuarios/{id}": {
+    "/api/Recetas/search": {
       "get": {
         "tags": [
-          "Usuarios"
+          "Recetas"
         ],
         "parameters": [
           {
-            "name": "id",
-            "in": "path",
-            "required": true,
+            "name": "query",
+            "in": "query",
             "schema": {
-              "type": "integer",
-              "format": "int32"
+              "type": "string"
             }
           }
         ],
@@ -1121,81 +1585,276 @@
             "content": {
               "text/plain": {
                 "schema": {
-                  "$ref": "#/components/schemas/Usuario"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecetaListDto"
+                  }
                 }
               },
               "application/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Usuario"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecetaListDto"
+                  }
                 }
               },
               "text/json": {
                 "schema": {
-                  "$ref": "#/components/schemas/Usuario"
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/RecetaListDto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuarios/me": {
+      "get": {
+        "tags": [
+          "Usuarios"
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioProfileDto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioProfileDto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/UsuarioProfileDto"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
                 }
               }
             }
           }
         }
       },
+      "delete": {
+        "tags": [
+          "Usuarios"
+        ],
+        "responses": {
+          "204": {
+            "description": "No Content"
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/Usuarios/me/password": {
       "put": {
         "tags": [
           "Usuarios"
         ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
-            }
-          }
-        ],
         "requestBody": {
           "content": {
             "application/json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/ChangePasswordDto"
               }
             },
             "text/json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/ChangePasswordDto"
               }
             },
             "application/*+json": {
               "schema": {
-                "$ref": "#/components/schemas/Usuario"
+                "$ref": "#/components/schemas/ChangePasswordDto"
               }
             }
           }
         },
         "responses": {
           "200": {
-            "description": "OK"
-          }
-        }
-      },
-      "delete": {
-        "tags": [
-          "Usuarios"
-        ],
-        "parameters": [
-          {
-            "name": "id",
-            "in": "path",
-            "required": true,
-            "schema": {
-              "type": "integer",
-              "format": "int32"
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "string"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "string"
+                }
+              }
             }
-          }
-        ],
-        "responses": {
-          "200": {
-            "description": "OK"
+          },
+          "400": {
+            "description": "Bad Request",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "401": {
+            "description": "Unauthorized",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
+          },
+          "404": {
+            "description": "Not Found",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/ProblemDetails"
+                }
+              }
+            }
           }
         }
       }
@@ -1203,118 +1862,120 @@
   },
   "components": {
     "schemas": {
-      "Comentario": {
+      "ChangePasswordDto": {
         "required": [
-          "comentarioTexto"
+          "currentPassword",
+          "newPassword"
         ],
         "type": "object",
         "properties": {
-          "idComentario": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "titulo": {
-            "maxLength": 255,
-            "minLength": 0,
-            "type": "string",
-            "nullable": true
-          },
-          "comentarioTexto": {
+          "currentPassword": {
             "minLength": 1,
             "type": "string"
           },
-          "meGusta": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "fechaComentario": {
-            "type": "string",
-            "format": "date-time"
-          },
-          "idUsuario": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "usuario": {
-            "$ref": "#/components/schemas/Usuario"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Estadistica": {
-        "type": "object",
-        "properties": {
-          "idEstadistica": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "idModulo": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "modulo": {
-            "$ref": "#/components/schemas/Modulo"
-          },
-          "valorTemperatura": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "valorHumedad": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "valorLuz": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "nivelAgua": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "fechaHora": {
-            "type": "string",
-            "format": "date-time"
-          }
-        },
-        "additionalProperties": false
-      },
-      "Guia": {
-        "required": [
-          "tipoPlanta"
-        ],
-        "type": "object",
-        "properties": {
-          "idGuia": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "tipoPlanta": {
+          "newPassword": {
             "maxLength": 100,
-            "minLength": 0,
+            "minLength": 6,
             "type": "string"
           },
-          "cuidadoPlanta": {
-            "type": "string",
-            "nullable": true
-          },
-          "notasPlantas": {
-            "type": "string",
-            "nullable": true
-          },
-          "estacionPlanta": {
-            "maxLength": 50,
-            "minLength": 0,
+          "confirmNewPassword": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "LoginRequest": {
+      "CultivoDetailDto": {
+        "type": "object",
+        "properties": {
+          "cultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "requisitosClima": {
+            "type": "string",
+            "nullable": true
+          },
+          "requisitosAgua": {
+            "type": "string",
+            "nullable": true
+          },
+          "requisitosLuz": {
+            "type": "string",
+            "nullable": true
+          },
+          "esFavorito": {
+            "type": "boolean"
+          },
+          "temporadas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CultivoEnRecetaDto": {
+        "type": "object",
+        "properties": {
+          "cultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreCultivo": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "CultivoListDto": {
+        "type": "object",
+        "properties": {
+          "cultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "imagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "esFavorito": {
+            "type": "boolean"
+          },
+          "temporadas": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequestDto": {
         "required": [
           "contrasena",
           "correo"
@@ -1333,215 +1994,370 @@
         },
         "additionalProperties": false
       },
-      "Modulo": {
-        "required": [
-          "codigoModulo",
-          "tipoModulo"
-        ],
+      "LoginResponseDto": {
         "type": "object",
         "properties": {
-          "idModulo": {
+          "jwtToken": {
+            "type": "string",
+            "nullable": true
+          },
+          "usuarioID": {
             "type": "integer",
             "format": "int32"
           },
-          "codigoModulo": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
-          },
-          "tipoModulo": {
-            "maxLength": 50,
-            "minLength": 0,
-            "type": "string"
-          },
-          "costo": {
-            "type": "number",
-            "format": "double",
+          "correo": {
+            "type": "string",
             "nullable": true
           },
-          "ventaModulo": {
-            "$ref": "#/components/schemas/VentaModulo"
-          },
-          "planta": {
-            "$ref": "#/components/schemas/Planta"
-          },
-          "estadisticas": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Estadistica"
-            },
+          "nombre": {
+            "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "Planta": {
+      "ModuloCreateDto": {
         "required": [
-          "nombrePlanta"
+          "nombreModulo"
         ],
         "type": "object",
         "properties": {
-          "idPlanta": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nombrePlanta": {
-            "maxLength": 100,
+          "nombreModulo": {
+            "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "tipoPlanta": {
-            "maxLength": 100,
-            "minLength": 0,
+          "estado": {
             "type": "string",
             "nullable": true
           },
-          "usoPlanta": {
-            "maxLength": 100,
-            "minLength": 0,
+          "diasEnFuncionamiento": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ModuloListDto": {
+        "type": "object",
+        "properties": {
+          "moduloID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "nombreModulo": {
             "type": "string",
             "nullable": true
           },
-          "fotoPlanta": {
-            "maxLength": 255,
-            "minLength": 0,
+          "estado": {
             "type": "string",
             "nullable": true
           },
-          "favorito": {
-            "type": "boolean"
+          "diasEnFuncionamiento": {
+            "type": "integer",
+            "format": "int32"
           },
-          "idModulo": {
+          "cantidadCultivosActual": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "cantidadCultivosMax": {
+            "type": "integer",
+            "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "ProblemDetails": {
+        "type": "object",
+        "properties": {
+          "type": {
+            "type": "string",
+            "nullable": true
+          },
+          "title": {
+            "type": "string",
+            "nullable": true
+          },
+          "status": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "modulo": {
-            "$ref": "#/components/schemas/Modulo"
-          }
-        },
-        "additionalProperties": false
-      },
-      "RegisterRequest": {
-        "required": [
-          "contrasena",
-          "correo",
-          "nombre"
-        ],
-        "type": "object",
-        "properties": {
-          "nombre": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "correo": {
-            "minLength": 1,
-            "type": "string",
-            "format": "email"
-          },
-          "contrasena": {
-            "minLength": 1,
-            "type": "string"
-          },
-          "tipo": {
+          "detail": {
             "type": "string",
             "nullable": true
           },
-          "rol": {
+          "instance": {
             "type": "string",
             "nullable": true
           }
         },
-        "additionalProperties": false
+        "additionalProperties": { }
       },
-      "Usuario": {
+      "RecetaCreateDto": {
         "required": [
-          "contrasena",
-          "correo",
-          "nombre"
+          "nombreReceta"
         ],
         "type": "object",
         "properties": {
-          "idUsuario": {
-            "type": "integer",
-            "format": "int32"
-          },
-          "nombre": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "correo": {
-            "maxLength": 100,
-            "minLength": 0,
-            "type": "string"
-          },
-          "contrasena": {
+          "nombreReceta": {
             "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "tipo": {
-            "maxLength": 50,
-            "minLength": 0,
+          "descripcion": {
             "type": "string",
             "nullable": true
           },
-          "rol": {
-            "maxLength": 50,
-            "minLength": 0,
+          "instrucciones": {
             "type": "string",
             "nullable": true
           },
-          "ventaModulos": {
+          "cultivoIDs": {
             "type": "array",
             "items": {
-              "$ref": "#/components/schemas/VentaModulo"
-            },
-            "nullable": true
-          },
-          "comentarios": {
-            "type": "array",
-            "items": {
-              "$ref": "#/components/schemas/Comentario"
+              "type": "integer",
+              "format": "int32"
             },
             "nullable": true
           }
         },
         "additionalProperties": false
       },
-      "VentaModulo": {
+      "RecetaDetailDto": {
         "type": "object",
         "properties": {
-          "idVentas": {
+          "recetaID": {
             "type": "integer",
             "format": "int32"
           },
-          "fechaVenta": {
+          "nombreReceta": {
             "type": "string",
-            "format": "date-time"
+            "nullable": true
           },
-          "cantidadVenta": {
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "instrucciones": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivosNecesarios": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CultivoEnRecetaDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecetaListDto": {
+        "type": "object",
+        "properties": {
+          "recetaID": {
             "type": "integer",
             "format": "int32"
           },
-          "totalVenta": {
+          "nombreReceta": {
+            "type": "string",
+            "nullable": true
+          },
+          "descripcionCorta": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecetaUpdateDto": {
+        "required": [
+          "nombreReceta"
+        ],
+        "type": "object",
+        "properties": {
+          "nombreReceta": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "instrucciones": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoIDs": {
+            "type": "array",
+            "items": {
+              "type": "integer",
+              "format": "int32"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RegisterRequestDto": {
+        "required": [
+          "contrasena",
+          "correo",
+          "nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "nombre": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "correo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "format": "email"
+          },
+          "contrasena": {
+            "maxLength": 255,
+            "minLength": 6,
+            "type": "string"
+          }
+        },
+        "additionalProperties": false
+      },
+      "SensorDetailDto": {
+        "type": "object",
+        "properties": {
+          "sensorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "moduloNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipoSensor": {
+            "type": "string",
+            "nullable": true
+          },
+          "unidadMedida": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorLectura": {
             "type": "number",
-            "format": "double"
+            "format": "double",
+            "nullable": true
           },
-          "idUsuario": {
+          "ultimaLectura": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "estadoRiego": {
+            "type": "string",
+            "nullable": true
+          },
+          "esAcuaHidroponico": {
+            "type": "boolean"
+          },
+          "cultivoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cultivoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoRequisitosClima": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoRequisitosAgua": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoRequisitosLuz": {
+            "type": "string",
+            "nullable": true
+          },
+          "tipsParaEstaPlanta": {
+            "type": "array",
+            "items": {
+              "type": "string"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SensorInModuloDto": {
+        "type": "object",
+        "properties": {
+          "sensorID": {
             "type": "integer",
             "format": "int32"
           },
-          "usuario": {
-            "$ref": "#/components/schemas/Usuario"
+          "tipoSensor": {
+            "type": "string",
+            "nullable": true
           },
-          "idModulo": {
+          "unidadMedida": {
+            "type": "string",
+            "nullable": true
+          },
+          "valorLectura": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "estadoRiego": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cultivoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "enUso": {
+            "type": "boolean",
+            "readOnly": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioProfileDto": {
+        "type": "object",
+        "properties": {
+          "usuarioID": {
             "type": "integer",
             "format": "int32"
           },
-          "modulo": {
-            "$ref": "#/components/schemas/Modulo"
+          "nombreUsuario": {
+            "type": "string",
+            "nullable": true
+          },
+          "correo": {
+            "type": "string",
+            "nullable": true
           }
         },
         "additionalProperties": false
@@ -1550,7 +2366,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",
-        "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
+        "description": "Encabezado de autorización JWT usando el esquema Bearer. Ejemplo: \"Authorization: Bearer {token}\"",
         "name": "Authorization",
         "in": "header"
       }
