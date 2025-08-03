@@ -159,10 +159,17 @@ namespace CropMonitor.Services
                 // 
                 int sensorId = topic switch
                 {
-                    "valor-humedad-1" => 1,
-                    "valor-humedad-2" => 2,
-                    "valor-humedad-3" => 3,
-                    "valor-humedad-4" => 4,
+                    //"valor-humedad-1" => 1,
+                    //"valor-humedad-2" => 2,
+                    //"valor-humedad-3" => 3,
+                    //"valor-humedad-4" => 4,
+                    //_ => 0
+
+
+                    "valor-temperatura-1" => 1,
+                    "valor-temperatura-2" => 2,
+                    "valor-temperatura-3" => 3,
+                    "valor-temperatura-4" => 4,
                     _ => 0
                 };
 
