@@ -19,24 +19,30 @@ namespace CropMonitor.Services
     {
         // Creamos un contexto "DbContext" por cada mensaje recibido
         private readonly IServiceScopeFactory _scopeFactory;
+        private readonly ILogger<MqttService> _logger;
         private IMqttClient _mqttClient;
 
-        // 
-        public MqttService(IServiceScopeFactory scopeFactory)
+        public MqttService(IServiceScopeFactory scopeFactory, ILogger<MqttService> logger)
         {
             _scopeFactory = scopeFactory;
+            _logger = logger;
         }
-
-
-
 
         // Metodo para suscribirme y leer todo lo que se publica en el broker
         // Tambien guardamos los datos en la BD.
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            // Creamos el factory
-            var factory = new MqttFactory();
-            var mqttClient = factory.CreateMqttClient();
+            // OPCIÓN 1: Con MqttFactory (compatible con v5)
+            //var factory = new MqttFactory();
+            //_mqttClient = factory.CreateMqttClient();
+
+            // OPCIÓN 2: Con MqttClientFactory (nuevo en v5) - Más directo
+             var clientFactory = new MqttClientFactory();
+            _mqttClient = clientFactory.CreateMqttClient();
+
+            // OPCIÓN 3: Directo (más simple para v5)
+            // _mqttClient = new MqttClientFactory().CreateMqttClient();
+
 
 
 
@@ -71,7 +77,7 @@ namespace CropMonitor.Services
 
             // Nos conecctamos al broker
             var options = new MqttClientOptionsBuilder()
-                .WithTcpServer("broker.hivemq.com", 1883)
+                .WithTcpServer("c89a75e945ca4a3590a418760638ab79.s1.eu.hivemq.cloud", 8883)
                 .Build();
 
 
