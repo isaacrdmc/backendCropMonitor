@@ -78,6 +78,11 @@ namespace CropMonitor.Services
             // Nos conecctamos al broker
             var options = new MqttClientOptionsBuilder()
                 .WithTcpServer("c89a75e945ca4a3590a418760638ab79.s1.eu.hivemq.cloud", 8883)
+                .WithCredentials("hivemq.webclient.1753150694481", "Q78*&UOb3<McAwqxt$4V")
+                .WithTlsOptions(options =>
+                {
+                    options.WithCertificateValidationHandler(context => true);
+                })
                 .Build();
 
 
