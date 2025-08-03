@@ -1,5 +1,6 @@
 using CropMonitor.Data;
 using CropMonitor.Models.AppMovil;
+using CropMonitor.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
@@ -94,6 +95,14 @@ builder.Services.AddSwaggerGen(c =>
     c.TagActionsBy(api => new[] { api.GroupName });
     c.DocInclusionPredicate((name, api) => true);
 });
+
+
+
+// Agregamos el servicio MQTT
+builder.Services.AddHostedService<MqttService>();
+
+
+
 
 var app = builder.Build();
 
