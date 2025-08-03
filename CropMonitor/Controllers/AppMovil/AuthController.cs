@@ -12,11 +12,11 @@ using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
 using System.Collections.Generic; // Necesario para List<Claim>
-using Microsoft.Extensions.Configuration; // Asegúrate de que este using esté presente
+using Microsoft.Extensions.Configuration;
 
-namespace CropMonitor.Controllers
+namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/[controller]")]
+    [Route("api/mobile/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {

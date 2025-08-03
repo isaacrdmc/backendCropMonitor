@@ -12,9 +12,9 @@ using System.Linq; // Para LINQ (Any, Select, ToList)
 using System.Security.Claims; // Para acceder a los claims del usuario autenticado
 using System.Threading.Tasks; // Para Task
 
-namespace CropMonitorApi.Controllers
+namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/[controller]")]
+    [Route("api/mobile/[controller]")]
     [ApiController]
     [Authorize] // Este atributo asegura que solo los usuarios autenticados puedan acceder a este controlador
     public class CultivosController : ControllerBase
@@ -71,7 +71,7 @@ namespace CropMonitorApi.Controllers
                 // Buscar en Nombre o Descripción (asegurando que Descripción no sea null)
                 query = query.Where(c =>
                     c.Nombre.Contains(searchText) ||
-                    (c.Descripcion != null && c.Descripcion.Contains(searchText)));
+                    c.Descripcion != null && c.Descripcion.Contains(searchText));
             }
 
             // Ejecutar la consulta y obtener los cultivos

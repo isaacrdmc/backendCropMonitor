@@ -10,9 +10,9 @@ using System.Linq;
 using System.Security.Claims; // Para obtener el ID del usuario del token
 using System.Threading.Tasks;
 
-namespace CropMonitorApi.Controllers
+namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/[controller]")]
+    [Route("api/mobile/[controller]")]
     [ApiController]
     [Authorize] // Todos los endpoints en este controlador requieren autenticación
     public class ModulosController : ControllerBase
@@ -120,7 +120,7 @@ namespace CropMonitorApi.Controllers
                         UnidadMedida = sensorType.Unidad,
                         UltimaLectura = null,
                         ValorLectura = null,
-                        EstadoRiego = (sensorType.Tipo == "Humedad") ? "Inactivo" : "N/A",
+                        EstadoRiego = sensorType.Tipo == "Humedad" ? "Inactivo" : "N/A",
                         EsAcuaHidroponico = false,
                         CultivoID = null, // Inicialmente sin cultivo asignado
                         MedidorSlotIndex = i // *** ASIGNA EL ÍNDICE DEL SLOT AQUÍ ***

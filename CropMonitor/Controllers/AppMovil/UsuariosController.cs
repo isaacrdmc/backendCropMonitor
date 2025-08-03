@@ -8,9 +8,9 @@ using Microsoft.EntityFrameworkCore;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CropMonitor.Controllers
+namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/[controller]")]
+    [Route("api/mobile/[controller]")]
     [ApiController]
     [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     public class UsuariosController : ControllerBase
