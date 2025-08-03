@@ -63,6 +63,12 @@ namespace CropMonitor.Services
                         await _mqttClient.SubscribeAsync("valor-humedad-3");
                         await _mqttClient.SubscribeAsync("valor-humedad-4");
 
+                        await _mqttClient.SubscribeAsync("valor-temperatura-1");
+                        await _mqttClient.SubscribeAsync("valor-temperatura-2");
+                        await _mqttClient.SubscribeAsync("valor-temperatura-3");
+                        await _mqttClient.SubscribeAsync("valor-temperatura-4");
+
+
                         Console.WriteLine("## Subscrito a los topics ###");
                     }
                     catch (Exception ex)
@@ -159,17 +165,17 @@ namespace CropMonitor.Services
                 // 
                 int sensorId = topic switch
                 {
-                    //"valor-humedad-1" => 1,
-                    //"valor-humedad-2" => 2,
-                    //"valor-humedad-3" => 3,
-                    //"valor-humedad-4" => 4,
-                    //_ => 0
+                    "valor-humedad-1" => 1,
+                    "valor-humedad-2" => 2,
+                    "valor-humedad-3" => 3,
+                    "valor-humedad-4" => 4,
+                    //_ => 0,
 
 
-                    "valor-temperatura-1" => 1,
-                    "valor-temperatura-2" => 2,
-                    "valor-temperatura-3" => 3,
-                    "valor-temperatura-4" => 4,
+                    "valor-temperatura-1" => 5,
+                    "valor-temperatura-2" => 6,
+                    "valor-temperatura-3" => 7,
+                    "valor-temperatura-4" => 8,
                     _ => 0
                 };
 
