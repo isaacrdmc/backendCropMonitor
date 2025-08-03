@@ -1,15 +1,14 @@
-﻿using CropMonitor.Data; // Donde se ubica el contexto de la BD
+﻿using MQTTnet;      // Libreria para trabajar con MQTT
+using CropMonitor.Data; // Donde se ubica el contexto de la BD
 using CropMonitor.Models.AppMovil;
 using System.Text;      // Para decodificar los mensajes recibidos
-using MQTTnet;      // Libreria para trabajar con MQTT
 using CropMonitor.DTOs.Sensores;
 using CropMonitor.Models; // Entidades si lo necesitas
 using Microsoft.Extensions.DependencyInjection;      // Para obtener instancias como el DbContext
 using Microsoft.Extensions.Hosting;      // Permite crear servicios en segundo plano
 using Microsoft.Extensions.Logging;
-using MQTTnet;              // MqttFactory
-using MQTTnet.Client;       // IMqttClient
-using MQTTnet.Client.Options; // MqttClientOptionsBuilder
+//using MQTTnet.Client;       // IMqttClient
+//using MQTTnet.Client.Options; // MqttClientOptionsBuilder
 using System;
 using System.Threading.Tasks;
 
@@ -35,9 +34,10 @@ namespace CropMonitor.Services
         // Tambien guardamos los datos en la BD.
         public async Task StartAsync(CancellationToken cancellationToken)
         {
-            // 
+            // Creamos el factory
             var factory = new MqttFactory();
-            _mqttClient = factory.CreateMqttClient();
+            var mqttClient = factory.CreateMqttClient();
+
 
 
             // Nos suscribimos a los topics cuando el cliente se conecte
