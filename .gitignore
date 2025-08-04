@@ -3,6 +3,7 @@
 *.suo
 *.user
 *.csproj.user
+*.sln.docstates
 *.vspscc
 *.vssscc
 *.bak
@@ -10,18 +11,25 @@
 *.obj
 *.exe
 *.dll
-# Binaries
+*.log
+*.trx
+
+# Binarios y temporales
 [Bb]in/
 [Oo]bj/
-# NuGet
+[Pp]ublish/
+TestResults/
+*.rsp
+*.csc
+
+# Archivos de dependencias y paquetes
 .nuget/
 packages/
-# Npm
 node_modules/
-# Other common files to ignore
-# Logs
-*.log
-# Temporary files
-*~
-# Rider (if using JetBrains Rider)
+
+# Rider (si usas JetBrains Rider)
 .idea/
+
+# Archivos de configuración de secretos
+appsettings.Development.json
+appsettings.Local.json

@@ -1951,7 +1951,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SensorInModuloDto"
+                    "$ref": "#/components/schemas/MedidorSlotDto"
                   }
                 }
               },
@@ -1959,7 +1959,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SensorInModuloDto"
+                    "$ref": "#/components/schemas/MedidorSlotDto"
                   }
                 }
               },
@@ -1967,7 +1967,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SensorInModuloDto"
+                    "$ref": "#/components/schemas/MedidorSlotDto"
                   }
                 }
               }
@@ -3628,6 +3628,19 @@
         },
         "additionalProperties": false
       },
+<<<<<<< HEAD
+      "MedidorSlotDto": {
+        "type": "object",
+        "properties": {
+          "medidorSlotIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enUso": {
+            "type": "boolean"
+          },
+          "cultivoID": {
+=======
       "Modulo": {
         "required": [
           "NombreModulo",
@@ -3651,10 +3664,25 @@
             "nullable": true
           },
           "DiasEnFuncionamiento": {
+>>>>>>> 5068e04d6e7438bb1d795a8c26c9fa93b909ec83
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
+<<<<<<< HEAD
+          "cultivoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "sensores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SensorLecturaDto"
+=======
           "CantidadCultivosActual": {
             "type": "integer",
             "format": "int32",
@@ -3676,6 +3704,7 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/Sensor"
+>>>>>>> 5068e04d6e7438bb1d795a8c26c9fa93b909ec83
             },
             "nullable": true
           }
@@ -4257,7 +4286,7 @@
         },
         "additionalProperties": false
       },
-      "SensorInModuloDto": {
+      "SensorLecturaDto": {
         "type": "object",
         "properties": {
           "SensorID": {
@@ -4280,6 +4309,8 @@
           "EstadoRiego": {
             "type": "string",
             "nullable": true
+<<<<<<< HEAD
+=======
           },
           "CultivoID": {
             "type": "integer",
@@ -4297,6 +4328,7 @@
           "EnUso": {
             "type": "boolean",
             "readOnly": true
+>>>>>>> 5068e04d6e7438bb1d795a8c26c9fa93b909ec83
           }
         },
         "additionalProperties": false
