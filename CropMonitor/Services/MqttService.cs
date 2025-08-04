@@ -215,6 +215,19 @@ namespace CropMonitor.Services
                         "valor-temperatura-2" => 6,
                         "valor-temperatura-3" => 7,
                         "valor-temperatura-4" => 8,
+
+                        "valor-luz-1" => 9,
+                        "valor-luz-2" => 10,
+                        "valor-luz-3" => 11,
+                        "valor-luz-4" => 12,
+
+                        "salida-riego-1" => 13,
+                        "salida-riego-2" => 14,
+                        "salida-riego-3" => 15,
+                        "salida-riego-4" => 16,
+
+                        "valor-sonico" => 17,
+
                         _ => 0
                     };
 
