@@ -167,9 +167,6 @@ namespace CropMonitor.Services
 
 
 
-
-
-
         // Interfaz para que "IHostedService" funcione correctamente
         public async Task StopAsync(CancellationToken cancellationToken)
         {
@@ -186,12 +183,6 @@ namespace CropMonitor.Services
                 _logger.LogError(ex, $"Error al detener el servicio MQTT: {ex.Message}");
             }
         }
-
-
-
-
-
-
 
 
 
@@ -280,6 +271,31 @@ namespace CropMonitor.Services
         }
     
     
+        // Metodo para publicar comandos a la ESP32:
+        public async Task PublicarComando(string topic, string mensaje)
+        {
+            try
+            {
+                // 
+                if (_mqttClient?.IsConnected ?? false)
+                {
+                    var message = new MqttApplicationMessageBuilder()
+                        .WithTopic(topic)
+                        .WithPayload(mensaje)
+                        .Build();
+
+                    // 
+                    await _mqttClient.PublishAsync(message);
+                    Console.WriteLine($"## Comando publicado: {topic} - {mensaje} ###");
+                } else
+                {
+                    Console.WriteLine("## No conectado al broker, no se puede publicar ##");
+                }
+            } catch(Exception ex)
+            {
+                Console.WriteLine($"## No conectado al broker, no se puede publicar ###");
+            }
+        }
     
     }
 }

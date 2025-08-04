@@ -99,7 +99,8 @@ builder.Services.AddSwaggerGen(c =>
 
 
 // Agregamos el servicio MQTT
-builder.Services.AddHostedService<MqttService>();
+builder.Services.AddSingleton<MqttService>();
+builder.Services.AddHostedService(provider => provider.GetRequiredService<MqttService>());
 
 
 
