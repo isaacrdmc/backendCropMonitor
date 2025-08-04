@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/mobile/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [Authorize] // Asegura que solo usuarios autenticados puedan acceder
     public class UsuariosController : ControllerBase

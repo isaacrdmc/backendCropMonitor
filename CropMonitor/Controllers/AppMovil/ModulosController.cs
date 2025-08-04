@@ -12,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/mobile/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [Authorize]
     public class ModulosController : ControllerBase

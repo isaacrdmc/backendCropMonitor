@@ -16,7 +16,7 @@ using Microsoft.Extensions.Configuration;
 
 namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/mobile/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     public class AuthController : ControllerBase
     {

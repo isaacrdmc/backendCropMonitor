@@ -14,7 +14,7 @@ using System.Threading.Tasks; // Para Task
 
 namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/mobile/[controller]")]
+    [Route("api/[controller]")]
     [ApiController]
     [Authorize] // Este atributo asegura que solo los usuarios autenticados puedan acceder a este controlador
     public class CultivosController : ControllerBase
