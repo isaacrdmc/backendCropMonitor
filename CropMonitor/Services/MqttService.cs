@@ -22,7 +22,6 @@ namespace CropMonitor.Services
         private readonly IServiceScopeFactory _scopeFactory;
         private readonly ILogger<MqttService> _logger;
         private IMqttClient _mqttClient;
-
         public MqttService(IServiceScopeFactory scopeFactory, ILogger<MqttService> logger)
         {
             _scopeFactory = scopeFactory;
@@ -58,16 +57,33 @@ namespace CropMonitor.Services
                         Console.WriteLine("### COnectando con el broker ###");
 
                         // Nos suscribimos a los topics de entradas:
-                        await _mqttClient.SubscribeAsync("valor-humedad-1");
-                        await _mqttClient.SubscribeAsync("valor-humedad-2");
-                        await _mqttClient.SubscribeAsync("valor-humedad-3");
-                        await _mqttClient.SubscribeAsync("valor-humedad-4");
+                        //await _mqttClient.SubscribeAsync("valor-humedad-1");
+                        //await _mqttClient.SubscribeAsync("valor-humedad-2");
+                        //await _mqttClient.SubscribeAsync("valor-humedad-3");
+                        //await _mqttClient.SubscribeAsync("valor-humedad-4");
 
-                        await _mqttClient.SubscribeAsync("valor-temperatura-1");
-                        await _mqttClient.SubscribeAsync("valor-temperatura-2");
-                        await _mqttClient.SubscribeAsync("valor-temperatura-3");
-                        await _mqttClient.SubscribeAsync("valor-temperatura-4");
+                        //await _mqttClient.SubscribeAsync("valor-temperatura-1");
+                        //await _mqttClient.SubscribeAsync("valor-temperatura-2");
+                        //await _mqttClient.SubscribeAsync("valor-temperatura-3");
+                        //await _mqttClient.SubscribeAsync("valor-temperatura-4");
 
+
+
+
+                        // Nos suscribimos a los topics de entradas:
+                        string[] topics = {
+                            "valor-humedad-1", "valor-humedad-2", "valor-humedad-3", "valor-humedad-4",
+                            "valor-temperatura-1", "valor-temperatura-2", "valor-temperatura-3", "valor-temperatura-4"
+                        };
+
+
+                        // Nos suscribimos a todos los topics de una vez
+                        foreach (var topic in topics)
+                        {
+                            // Nos suscribimos a cada topic
+                            await _mqttClient.SubscribeAsync(topic);
+                            
+                        }
 
                         Console.WriteLine("## Subscrito a los topics ###");
                     }
@@ -96,6 +112,34 @@ namespace CropMonitor.Services
                     catch (Exception ex)
                     {
                         _logger.LogError(ex, $"Error procesando el mensaje: {ex.Message}");
+                    }
+                };
+
+
+                // Manejamso la reconexió en caso de que se pierda la conexión:
+                _mqttClient.DisconnectedAsync += async e =>
+                {
+                    _logger.LogWarning("Desconectado del broker. Intentando reocnexión...");
+
+                    // 
+                    int retryDelaySeconds = 5000; // 5 segundos
+                    int maxRetryDelaySeconds = 60000; // 1 minuto
+
+                    // 
+                    while (!_mqttClient.IsConnected)
+                    {
+                        try
+                        {
+                            // 
+                            await Task.Delay(TimeSpan.FromSeconds(retryDelaySeconds));
+                            await _mqttClient.ReconnectAsync();
+                            Console.WriteLine("Reconexión exitosa.");
+                        }
+                        catch (Exception ex)
+                        {
+                            _logger.LogError(ex, "Error durante reconexión. Reintentando...");
+                            retryDelaySeconds = Math.Min(retryDelaySeconds * 2, maxRetryDelaySeconds);
+                        }
                     }
                 };
 
@@ -156,62 +200,87 @@ namespace CropMonitor.Services
         // Tambien guardamos los datos en la BD.
         private async Task SaveReading(string topic, string payload)
         {
-            try
+            // Creamos un bucle para manejar la conexión a la base de datos:
+            
+            const int maxAttempts = 3;
+
+            for (int attemp = 1; attemp < maxAttempts; attemp++)
             {
-                using var scope = _scopeFactory.CreateScope();
-                var db = scope.ServiceProvider.GetRequiredService<CropMonitorDbContext>();
-
-
-                // 
-                int sensorId = topic switch
+                try
                 {
-                    "valor-humedad-1" => 1,
-                    "valor-humedad-2" => 2,
-                    "valor-humedad-3" => 3,
-                    "valor-humedad-4" => 4,
-                    //_ => 0,
+                    using var scope = _scopeFactory.CreateScope();
+                    var db = scope.ServiceProvider.GetRequiredService<CropMonitorDbContext>();
 
 
-                    "valor-temperatura-1" => 5,
-                    "valor-temperatura-2" => 6,
-                    "valor-temperatura-3" => 7,
-                    "valor-temperatura-4" => 8,
-                    _ => 0
-                };
+                    // 
+                    int sensorId = topic switch
+                    {
+                        "valor-humedad-1" => 1,
+                        "valor-humedad-2" => 2,
+                        "valor-humedad-3" => 3,
+                        "valor-humedad-4" => 4,
 
-                // 
-                if (sensorId == 0) return;
+                        "valor-temperatura-1" => 5,
+                        "valor-temperatura-2" => 6,
+                        "valor-temperatura-3" => 7,
+                        "valor-temperatura-4" => 8,
+                        _ => 0
+                    };
 
-                if (!decimal.TryParse(payload, out decimal valor)) return;
+                    // 
+                    if (sensorId == 0) return;
 
-                // Guardamos la lectura
-                var lectura = new LecturaSensor
+                    if (!decimal.TryParse(payload, out decimal valor)) return;
+
+                    // Guardamos la lectura
+                    var lectura = new LecturaSensor
+                    {
+                        SensorID = sensorId,
+                        Timestamp = DateTime.Now,
+                        Valor = valor
+                    };
+
+
+                    // Ahora vamos a guardar la lectura en la base de datos:
+
+                    db.LecturasSensores.Add(lectura);
+
+                    // Actualizar última lectura en tabla 'Sensores'
+                    var sensor = await db.Sensores.FindAsync(sensorId);
+                    if (sensor != null)
+                    {
+                        sensor.UltimaLectura = DateTime.Now;
+                        sensor.ValorLectura = valor;
+                    }
+
+                    await db.SaveChangesAsync();
+                    Console.WriteLine($"### Lectura guardada para sensor {sensorId} ###");
+
+                    // Salimos del bucle si todo ha ido bien:
+                    break;
+                }
+                catch (Exception ex)
                 {
-                    SensorID = sensorId,
-                    Timestamp = DateTime.Now,
-                    Valor = valor
-                };
+                    _logger.LogError(ex, $"Error guardando la lectura. Intento {attemp} de {maxAttempts}.");
 
-
-                // 
-                db.LecturasSensores.Add(lectura);
-
-                // Actualizar última lectura en tabla 'Sensores'
-                var sensor = await db.Sensores.FindAsync(sensorId);
-                if (sensor != null)
-                {
-                    sensor.UltimaLectura = DateTime.Now;
-                    sensor.ValorLectura = valor;
+                    // 
+                    if (attemp == maxAttempts)
+                    {
+                        _logger.LogError($"Fallo persistente al guardar la lectura después de {maxAttempts} intentos.");
+                    } else
+                    {
+                        // Esperamos un poco antes de reintentar
+                        await Task.Delay(TimeSpan.FromSeconds(2 * attemp));
+                    }
                 }
 
-                await db.SaveChangesAsync();
-                Console.WriteLine($"### Lectura guardada para sensor {sensorId} ###");
             }
-            catch (Exception ex)
-            {
-                _logger.LogError(ex, $"Error guardando la lectura: {ex.Message}");
-            }
+
+
         }
+    
+    
+    
     }
 }
 
