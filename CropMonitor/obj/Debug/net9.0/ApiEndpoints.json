@@ -1,8 +1,24 @@
 [
   {
-    "ContainingType": "CropMonitor.Controllers.AuthController",
+    "ContainingType": "Program\u002B\u003C\u003Ec",
+    "Method": "\u003C\u003CMain\u003E$\u003Eb__0_7",
+    "RelativePath": "",
+    "HttpMethod": "GET",
+    "IsController": false,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Void",
+        "MediaTypes": [],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.AppMovil.AuthController",
     "Method": "Login",
-    "RelativePath": "api/Auth/login",
+    "RelativePath": "api/mobile/Auth/login",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -44,9 +60,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.AuthController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.AuthController",
     "Method": "Register",
-    "RelativePath": "api/Auth/register",
+    "RelativePath": "api/mobile/Auth/register",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -75,9 +91,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "GetCultivos",
-    "RelativePath": "api/Cultivos",
+    "RelativePath": "api/mobile/Cultivos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -115,9 +131,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "CreateCultivo",
-    "RelativePath": "api/Cultivos",
+    "RelativePath": "api/mobile/Cultivos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -185,9 +201,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "ToggleFavorito",
-    "RelativePath": "api/Cultivos/{cultivoId}/toggle-favorito",
+    "RelativePath": "api/mobile/Cultivos/{cultivoId}/toggle-favorito",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -234,9 +250,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "GetCultivoById",
-    "RelativePath": "api/Cultivos/{id}",
+    "RelativePath": "api/mobile/Cultivos/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -278,9 +294,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "UpdateCultivo",
-    "RelativePath": "api/Cultivos/{id}",
+    "RelativePath": "api/mobile/Cultivos/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -362,9 +378,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "DeleteCultivo",
-    "RelativePath": "api/Cultivos/{id}",
+    "RelativePath": "api/mobile/Cultivos/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -402,9 +418,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.CultivosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.CultivosController",
     "Method": "GetCultivosFavoritos",
-    "RelativePath": "api/Cultivos/Favoritos",
+    "RelativePath": "api/mobile/Cultivos/Favoritos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -431,9 +447,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.ModulosController",
     "Method": "GetModulosUsuario",
-    "RelativePath": "api/Modulos",
+    "RelativePath": "api/mobile/Modulos",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -460,9 +476,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.ModulosController",
     "Method": "CreateModulo",
-    "RelativePath": "api/Modulos",
+    "RelativePath": "api/mobile/Modulos",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -504,9 +520,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.ModulosController",
     "Method": "AsignarCultivoAMedidorSlot",
-    "RelativePath": "api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/asignar-cultivo/{cultivoId}",
+    "RelativePath": "api/mobile/Modulos/{moduloId}/medidores/{medidorSlotIndex}/asignar-cultivo/{cultivoId}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -563,9 +579,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.ModulosController",
     "Method": "DesasignarCultivoDeMedidorSlot",
-    "RelativePath": "api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/desasignar-cultivo",
+    "RelativePath": "api/mobile/Modulos/{moduloId}/medidores/{medidorSlotIndex}/desasignar-cultivo",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -617,9 +633,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.ModulosController",
     "Method": "GetSensoresByModulo",
-    "RelativePath": "api/Modulos/{moduloId}/sensores",
+    "RelativePath": "api/mobile/Modulos/{moduloId}/sensores",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -661,9 +677,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitorApi.Controllers.ModulosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.ModulosController",
     "Method": "GetSensorDetail",
-    "RelativePath": "api/Modulos/sensores/{sensorId}",
+    "RelativePath": "api/mobile/Modulos/sensores/{sensorId}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -705,9 +721,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.RecetasController",
     "Method": "GetRecetas",
-    "RelativePath": "api/Recetas",
+    "RelativePath": "api/mobile/Recetas",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -725,9 +741,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.RecetasController",
     "Method": "CreateReceta",
-    "RelativePath": "api/Recetas",
+    "RelativePath": "api/mobile/Recetas",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
@@ -760,9 +776,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.RecetasController",
     "Method": "GetReceta",
-    "RelativePath": "api/Recetas/{id}",
+    "RelativePath": "api/mobile/Recetas/{id}",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -795,9 +811,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.RecetasController",
     "Method": "UpdateReceta",
-    "RelativePath": "api/Recetas/{id}",
+    "RelativePath": "api/mobile/Recetas/{id}",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -840,9 +856,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.RecetasController",
     "Method": "DeleteReceta",
-    "RelativePath": "api/Recetas/{id}",
+    "RelativePath": "api/mobile/Recetas/{id}",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -871,9 +887,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.RecetasController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.RecetasController",
     "Method": "SearchRecetas",
-    "RelativePath": "api/Recetas/search",
+    "RelativePath": "api/mobile/Recetas/search",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -897,9 +913,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.UsuariosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.UsuariosController",
     "Method": "GetCurrentUserProfile",
-    "RelativePath": "api/Usuarios/me",
+    "RelativePath": "api/mobile/Usuarios/me",
     "HttpMethod": "GET",
     "IsController": true,
     "Order": 0,
@@ -935,9 +951,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.UsuariosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.UsuariosController",
     "Method": "DeleteAccount",
-    "RelativePath": "api/Usuarios/me",
+    "RelativePath": "api/mobile/Usuarios/me",
     "HttpMethod": "DELETE",
     "IsController": true,
     "Order": 0,
@@ -978,9 +994,9 @@
     ]
   },
   {
-    "ContainingType": "CropMonitor.Controllers.UsuariosController",
+    "ContainingType": "CropMonitor.Controllers.AppMovil.UsuariosController",
     "Method": "ChangePassword",
-    "RelativePath": "api/Usuarios/me/password",
+    "RelativePath": "api/mobile/Usuarios/me/password",
     "HttpMethod": "PUT",
     "IsController": true,
     "Order": 0,
@@ -1027,6 +1043,562 @@
           "text/json"
         ],
         "StatusCode": 404
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.WebApp.Controllers.AuthWebController",
+    "Method": "LoginAdmin",
+    "RelativePath": "api/web/AuthWeb/login-admin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "correo",
+        "Type": "System.String",
+        "IsRequired": false
+      },
+      {
+        "Name": "contrasena",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.BlogController",
+    "Method": "GetPosts",
+    "RelativePath": "api/web/Blog",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Blog, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.BlogController",
+    "Method": "CreatePost",
+    "RelativePath": "api/web/Blog",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "post",
+        "Type": "CropMonitor.Models.WebApp.Blog",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.Blog",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ComprasController",
+    "Method": "GetCompras",
+    "RelativePath": "api/web/Compras",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Compra, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ComprasController",
+    "Method": "CreateCompra",
+    "RelativePath": "api/web/Compras",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "compra",
+        "Type": "CropMonitor.Models.WebApp.Compra",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.Compra",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ContactoController",
+    "Method": "SendMessage",
+    "RelativePath": "api/web/Contacto",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "contacto",
+        "Type": "CropMonitor.Models.WebApp.Contacto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.Contacto",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ContactoController",
+    "Method": "GetMessages",
+    "RelativePath": "api/web/Contacto",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Contacto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.FAQController",
+    "Method": "GetFAQs",
+    "RelativePath": "api/web/FAQ",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.FAQ, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.FAQController",
+    "Method": "CreateFAQ",
+    "RelativePath": "api/web/FAQ",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "faq",
+        "Type": "CropMonitor.Models.WebApp.FAQ",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.FAQ",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.GuiaCultivoController",
+    "Method": "GetGuias",
+    "RelativePath": "api/web/GuiaCultivo",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.GuiaCultivo, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.GuiaCultivoController",
+    "Method": "CreateGuia",
+    "RelativePath": "api/web/GuiaCultivo",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "guia",
+        "Type": "CropMonitor.Models.WebApp.GuiaCultivo",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.GuiaCultivo",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.KardexController",
+    "Method": "GetKardexProducto",
+    "RelativePath": "api/web/Kardex/producto/{productoId}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "productoId",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Kardex, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.KardexController",
+    "Method": "GetResumenKardex",
+    "RelativePath": "api/web/Kardex/resumen",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProductosController",
+    "Method": "GetProductos",
+    "RelativePath": "api/web/Productos",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Producto, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProductosController",
+    "Method": "AjustarInventario",
+    "RelativePath": "api/web/Productos/{id}/ajustar-inventario",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "ajuste",
+        "Type": "CropMonitor.Controllers.WebApp.ProductosController\u002BAjusteInventarioDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProductosController",
+    "Method": "GetProductoConKardex",
+    "RelativePath": "api/web/Productos/{id}/con-kardex",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProveedoresController",
+    "Method": "GetProveedores",
+    "RelativePath": "api/web/Proveedores",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Proveedor, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProveedoresController",
+    "Method": "CreateProveedor",
+    "RelativePath": "api/web/Proveedores",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "proveedor",
+        "Type": "CropMonitor.Models.WebApp.Proveedor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.Proveedor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProveedoresController",
+    "Method": "GetProveedor",
+    "RelativePath": "api/web/Proveedores/{id}",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.Proveedor",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.ProveedoresController",
+    "Method": "UpdateProveedor",
+    "RelativePath": "api/web/Proveedores/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "proveedor",
+        "Type": "CropMonitor.Models.WebApp.Proveedor",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.UsuariosController",
+    "Method": "GetUsuarios",
+    "RelativePath": "api/web/Usuarios",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "search",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.AppMovil.Usuario, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.UsuariosController",
+    "Method": "UpdateUsuario",
+    "RelativePath": "api/web/Usuarios/{id}",
+    "HttpMethod": "PUT",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "id",
+        "Type": "System.Int32",
+        "IsRequired": true
+      },
+      {
+        "Name": "updateDto",
+        "Type": "CropMonitor.Controllers.WebApp.UsuarioUpdateDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.UsuariosController",
+    "Method": "RegistrarAdmin",
+    "RelativePath": "api/web/Usuarios/registrar-admin",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "registroDto",
+        "Type": "CropMonitor.Controllers.WebApp.UsuarioRegistroDto",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.AppMovil.Usuario",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.VentasController",
+    "Method": "GetVentas",
+    "RelativePath": "api/web/Ventas",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": [
+      {
+        "Type": "System.Collections.Generic.IEnumerable\u00601[[CropMonitor.Models.WebApp.Venta, CropMonitor, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null]]",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
+      }
+    ]
+  },
+  {
+    "ContainingType": "CropMonitor.Controllers.WebApp.VentasController",
+    "Method": "CreateVenta",
+    "RelativePath": "api/web/Ventas",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "venta",
+        "Type": "CropMonitor.Models.WebApp.Venta",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": [
+      {
+        "Type": "CropMonitor.Models.WebApp.Venta",
+        "MediaTypes": [
+          "text/plain",
+          "application/json",
+          "text/json"
+        ],
+        "StatusCode": 200
       }
     ]
   }

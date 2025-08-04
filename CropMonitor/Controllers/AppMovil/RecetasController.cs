@@ -8,9 +8,9 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 
-namespace CropMonitor.Controllers
+namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/[controller]")]
+    [Route("api/mobile/[controller]")]
     [ApiController]
     // [Authorize] // Considera si solo usuarios autenticados pueden ver o gestionar recetas
     public class RecetasController : ControllerBase

@@ -5,10 +5,1019 @@
     "version": "v1"
   },
   "paths": {
-    "/api/Auth/register": {
+    "/": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/AuthWeb/login-admin": {
       "post": {
         "tags": [
-          "Auth"
+          null
+        ],
+        "parameters": [
+          {
+            "name": "correo",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          },
+          {
+            "name": "contrasena",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/Blog": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Blog"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Blog"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Blog"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Blog"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Blog"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Blog"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Blog"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Blog"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Blog"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Compras": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Compra"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Compra"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Compra"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Compra"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Compra"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Compra"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compra"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compra"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Compra"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Contacto": {
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contacto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contacto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Contacto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contacto"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contacto"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Contacto"
+                }
+              }
+            }
+          }
+        }
+      },
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contacto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contacto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Contacto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/FAQ": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FAQ"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FAQ"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/FAQ"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FAQ"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/FAQ"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/FAQ"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/FAQ"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FAQ"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/FAQ"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/GuiaCultivo": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GuiaCultivo"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GuiaCultivo"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/GuiaCultivo"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuiaCultivo"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuiaCultivo"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/GuiaCultivo"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuiaCultivo"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuiaCultivo"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/GuiaCultivo"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Kardex/producto/{productoId}": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "productoId",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kardex"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kardex"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Kardex"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Kardex/resumen": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/Productos": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Producto"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Productos/{id}/con-kardex": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/Productos/{id}/ajustar-inventario": {
+      "post": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AjusteInventarioDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/AjusteInventarioDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/AjusteInventarioDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/Proveedores": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Proveedor"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Proveedor"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Proveedor"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proveedor"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proveedor"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proveedor"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proveedor"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proveedor"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proveedor"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Proveedores/{id}": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proveedor"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proveedor"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Proveedor"
+                }
+              }
+            }
+          }
+        }
+      },
+      "put": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proveedor"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proveedor"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Proveedor"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/Usuarios": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "search",
+            "in": "query",
+            "schema": {
+              "type": "string"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Usuario"
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Usuarios/registrar-admin": {
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioRegistroDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioRegistroDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioRegistroDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Usuario"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/web/Usuarios/{id}": {
+      "put": {
+        "tags": [
+          null
+        ],
+        "parameters": [
+          {
+            "name": "id",
+            "in": "path",
+            "required": true,
+            "schema": {
+              "type": "integer",
+              "format": "int32"
+            }
+          }
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/UsuarioUpdateDto"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK"
+          }
+        }
+      }
+    },
+    "/api/web/Ventas": {
+      "get": {
+        "tags": [
+          null
+        ],
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Venta"
+                  }
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Venta"
+                  }
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "type": "array",
+                  "items": {
+                    "$ref": "#/components/schemas/Venta"
+                  }
+                }
+              }
+            }
+          }
+        }
+      },
+      "post": {
+        "tags": [
+          null
+        ],
+        "requestBody": {
+          "content": {
+            "application/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Venta"
+              }
+            },
+            "text/json": {
+              "schema": {
+                "$ref": "#/components/schemas/Venta"
+              }
+            },
+            "application/*+json": {
+              "schema": {
+                "$ref": "#/components/schemas/Venta"
+              }
+            }
+          }
+        },
+        "responses": {
+          "200": {
+            "description": "OK",
+            "content": {
+              "text/plain": {
+                "schema": {
+                  "$ref": "#/components/schemas/Venta"
+                }
+              },
+              "application/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Venta"
+                }
+              },
+              "text/json": {
+                "schema": {
+                  "$ref": "#/components/schemas/Venta"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
+    "/api/mobile/Auth/register": {
+      "post": {
+        "tags": [
+          null
         ],
         "requestBody": {
           "content": {
@@ -56,10 +1065,10 @@
         }
       }
     },
-    "/api/Auth/login": {
+    "/api/mobile/Auth/login": {
       "post": {
         "tags": [
-          "Auth"
+          null
         ],
         "requestBody": {
           "content": {
@@ -144,10 +1153,10 @@
         }
       }
     },
-    "/api/Cultivos": {
+    "/api/mobile/Cultivos": {
       "get": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "parameters": [
           {
@@ -220,7 +1229,7 @@
       },
       "post": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "requestBody": {
           "content": {
@@ -340,10 +1349,10 @@
         }
       }
     },
-    "/api/Cultivos/Favoritos": {
+    "/api/mobile/Cultivos/Favoritos": {
       "get": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "responses": {
           "200": {
@@ -398,10 +1407,10 @@
         }
       }
     },
-    "/api/Cultivos/{id}": {
+    "/api/mobile/Cultivos/{id}": {
       "get": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "parameters": [
           {
@@ -479,7 +1488,7 @@
       },
       "put": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "parameters": [
           {
@@ -631,7 +1640,7 @@
       },
       "delete": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "parameters": [
           {
@@ -691,10 +1700,10 @@
         }
       }
     },
-    "/api/Cultivos/{cultivoId}/toggle-favorito": {
+    "/api/mobile/Cultivos/{cultivoId}/toggle-favorito": {
       "post": {
         "tags": [
-          "Cultivos"
+          null
         ],
         "parameters": [
           {
@@ -774,10 +1783,10 @@
         }
       }
     },
-    "/api/Modulos": {
+    "/api/mobile/Modulos": {
       "get": {
         "tags": [
-          "Modulos"
+          null
         ],
         "responses": {
           "200": {
@@ -833,7 +1842,7 @@
       },
       "post": {
         "tags": [
-          "Modulos"
+          null
         ],
         "requestBody": {
           "content": {
@@ -918,10 +1927,10 @@
         }
       }
     },
-    "/api/Modulos/{moduloId}/sensores": {
+    "/api/mobile/Modulos/{moduloId}/sensores": {
       "get": {
         "tags": [
-          "Modulos"
+          null
         ],
         "parameters": [
           {
@@ -1007,10 +2016,10 @@
         }
       }
     },
-    "/api/Modulos/sensores/{sensorId}": {
+    "/api/mobile/Modulos/sensores/{sensorId}": {
       "get": {
         "tags": [
-          "Modulos"
+          null
         ],
         "parameters": [
           {
@@ -1087,10 +2096,10 @@
         }
       }
     },
-    "/api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/asignar-cultivo/{cultivoId}": {
+    "/api/mobile/Modulos/{moduloId}/medidores/{medidorSlotIndex}/asignar-cultivo/{cultivoId}": {
       "put": {
         "tags": [
-          "Modulos"
+          null
         ],
         "parameters": [
           {
@@ -1188,10 +2197,10 @@
         }
       }
     },
-    "/api/Modulos/{moduloId}/medidores/{medidorSlotIndex}/desasignar-cultivo": {
+    "/api/mobile/Modulos/{moduloId}/medidores/{medidorSlotIndex}/desasignar-cultivo": {
       "put": {
         "tags": [
-          "Modulos"
+          null
         ],
         "parameters": [
           {
@@ -1280,10 +2289,10 @@
         }
       }
     },
-    "/api/Recetas": {
+    "/api/mobile/Recetas": {
       "get": {
         "tags": [
-          "Recetas"
+          null
         ],
         "responses": {
           "200": {
@@ -1319,7 +2328,7 @@
       },
       "post": {
         "tags": [
-          "Recetas"
+          null
         ],
         "requestBody": {
           "content": {
@@ -1384,10 +2393,10 @@
         }
       }
     },
-    "/api/Recetas/{id}": {
+    "/api/mobile/Recetas/{id}": {
       "get": {
         "tags": [
-          "Recetas"
+          null
         ],
         "parameters": [
           {
@@ -1445,7 +2454,7 @@
       },
       "put": {
         "tags": [
-          "Recetas"
+          null
         ],
         "parameters": [
           {
@@ -1525,7 +2534,7 @@
       },
       "delete": {
         "tags": [
-          "Recetas"
+          null
         ],
         "parameters": [
           {
@@ -1565,10 +2574,10 @@
         }
       }
     },
-    "/api/Recetas/search": {
+    "/api/mobile/Recetas/search": {
       "get": {
         "tags": [
-          "Recetas"
+          null
         ],
         "parameters": [
           {
@@ -1612,10 +2621,10 @@
         }
       }
     },
-    "/api/Usuarios/me": {
+    "/api/mobile/Usuarios/me": {
       "get": {
         "tags": [
-          "Usuarios"
+          null
         ],
         "responses": {
           "200": {
@@ -1682,7 +2691,7 @@
       },
       "delete": {
         "tags": [
-          "Usuarios"
+          null
         ],
         "responses": {
           "204": {
@@ -1751,10 +2760,10 @@
         }
       }
     },
-    "/api/Usuarios/me/password": {
+    "/api/mobile/Usuarios/me/password": {
       "put": {
         "tags": [
-          "Usuarios"
+          null
         ],
         "requestBody": {
           "content": {
@@ -1862,24 +2871,367 @@
   },
   "components": {
     "schemas": {
-      "ChangePasswordDto": {
+      "AjusteInventarioDto": {
         "required": [
-          "currentPassword",
-          "newPassword"
+          "Cantidad"
         ],
         "type": "object",
         "properties": {
-          "currentPassword": {
+          "Cantidad": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CostoUnitario": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Comentario": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Blog": {
+        "required": [
+          "Contenido",
+          "Titulo"
+        ],
+        "type": "object",
+        "properties": {
+          "BlogID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Titulo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Contenido": {
             "minLength": 1,
             "type": "string"
           },
-          "newPassword": {
+          "ImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "FechaPublicacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Autor": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "ComentariosBlog": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComentarioBlog"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ChangePasswordDto": {
+        "required": [
+          "CurrentPassword",
+          "NewPassword"
+        ],
+        "type": "object",
+        "properties": {
+          "CurrentPassword": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "NewPassword": {
             "maxLength": 100,
             "minLength": 6,
             "type": "string"
           },
-          "confirmNewPassword": {
+          "ConfirmNewPassword": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Cliente": {
+        "required": [
+          "Nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "ClienteID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Nombre": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Correo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Telefono": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "Ventas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Venta"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ComentarioBlog": {
+        "required": [
+          "BlogID"
+        ],
+        "type": "object",
+        "properties": {
+          "ComentarioID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "BlogID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Comentario": {
+            "type": "string",
+            "nullable": true
+          },
+          "FechaComentario": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Blog": {
+            "$ref": "#/components/schemas/Blog"
+          },
+          "Usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Compra": {
+        "type": "object",
+        "properties": {
+          "CompraID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ProveedorID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "FechaCompra": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Total": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Proveedor": {
+            "$ref": "#/components/schemas/Proveedor"
+          },
+          "DetalleCompras": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetalleCompra"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "ConfiguracionNotificacion": {
+        "required": [
+          "UsuarioID"
+        ],
+        "type": "object",
+        "properties": {
+          "ConfiguracionID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "FrecuenciaRiego": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "HorarioNotificacion": {
+            "type": "string",
+            "format": "date-span",
+            "nullable": true
+          },
+          "ActivarRiegoAutomatico": {
+            "type": "boolean"
+          },
+          "TipoAlertaSensor": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "HabilitarRecomendacionesEstacionales": {
+            "type": "boolean"
+          },
+          "Usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Contacto": {
+        "type": "object",
+        "properties": {
+          "ContactoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Nombre": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Correo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Mensaje": {
+            "type": "string",
+            "nullable": true
+          },
+          "FechaEnvio": {
+            "type": "string",
+            "format": "date-time"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Cultivo": {
+        "required": [
+          "Nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Nombre": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "ImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "RequisitosClima": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "RequisitosAgua": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "RequisitosLuz": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "CultivosTemporadas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CultivosTemporada"
+            },
+            "nullable": true
+          },
+          "RecetasCultivos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecetasCultivo"
+            },
+            "nullable": true
+          },
+          "Sensores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sensor"
+            },
+            "nullable": true
+          },
+          "TipsCultivos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TipsCultivo"
+            },
+            "nullable": true
+          },
+          "Favoritos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Favorito"
+            },
+            "nullable": true
+          },
+          "Notificaciones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notificacion"
+            },
+            "nullable": true
+          },
+          "GuiaCultivos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/GuiaCultivo"
+            },
             "nullable": true
           }
         },
@@ -1888,38 +3240,38 @@
       "CultivoDetailDto": {
         "type": "object",
         "properties": {
-          "cultivoID": {
+          "CultivoID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombre": {
+          "Nombre": {
             "type": "string",
             "nullable": true
           },
-          "descripcion": {
+          "Descripcion": {
             "type": "string",
             "nullable": true
           },
-          "imagenURL": {
+          "ImagenURL": {
             "type": "string",
             "nullable": true
           },
-          "requisitosClima": {
+          "RequisitosClima": {
             "type": "string",
             "nullable": true
           },
-          "requisitosAgua": {
+          "RequisitosAgua": {
             "type": "string",
             "nullable": true
           },
-          "requisitosLuz": {
+          "RequisitosLuz": {
             "type": "string",
             "nullable": true
           },
-          "esFavorito": {
+          "EsFavorito": {
             "type": "boolean"
           },
-          "temporadas": {
+          "Temporadas": {
             "type": "array",
             "items": {
               "type": "string"
@@ -1932,11 +3284,11 @@
       "CultivoEnRecetaDto": {
         "type": "object",
         "properties": {
-          "cultivoID": {
+          "CultivoID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombreCultivo": {
+          "NombreCultivo": {
             "type": "string",
             "nullable": true
           }
@@ -1946,26 +3298,26 @@
       "CultivoListDto": {
         "type": "object",
         "properties": {
-          "cultivoID": {
+          "CultivoID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombre": {
+          "Nombre": {
             "type": "string",
             "nullable": true
           },
-          "descripcion": {
+          "Descripcion": {
             "type": "string",
             "nullable": true
           },
-          "imagenURL": {
+          "ImagenURL": {
             "type": "string",
             "nullable": true
           },
-          "esFavorito": {
+          "EsFavorito": {
             "type": "boolean"
           },
-          "temporadas": {
+          "Temporadas": {
             "type": "array",
             "items": {
               "type": "string"
@@ -1975,19 +3327,279 @@
         },
         "additionalProperties": false
       },
-      "LoginRequestDto": {
+      "CultivosTemporada": {
+        "type": "object",
+        "properties": {
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TemporadaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          },
+          "Temporada": {
+            "$ref": "#/components/schemas/Temporada"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetalleCompra": {
+        "type": "object",
+        "properties": {
+          "DetalleCompraID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CompraID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ProductoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Cantidad": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "CostoUnitario": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Compra": {
+            "$ref": "#/components/schemas/Compra"
+          },
+          "Producto": {
+            "$ref": "#/components/schemas/Producto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "DetalleVenta": {
+        "type": "object",
+        "properties": {
+          "DetalleVentaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "VentaID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "ProductoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Cantidad": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "PrecioVenta": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Venta": {
+            "$ref": "#/components/schemas/Venta"
+          },
+          "Producto": {
+            "$ref": "#/components/schemas/Producto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "FAQ": {
+        "type": "object",
+        "properties": {
+          "FAQID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Pregunta": {
+            "maxLength": 500,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Respuesta": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Favorito": {
         "required": [
-          "contrasena",
-          "correo"
+          "CultivoID",
+          "UsuarioID"
         ],
         "type": "object",
         "properties": {
-          "correo": {
+          "FavoritoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "FechaAgregado": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "GuiaCultivo": {
+        "required": [
+          "CultivoID"
+        ],
+        "type": "object",
+        "properties": {
+          "GuiaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Contenido": {
+            "type": "string",
+            "nullable": true
+          },
+          "FechaPublicacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Kardex": {
+        "type": "object",
+        "properties": {
+          "KardexID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ProductoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Fecha": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "TipoMovimiento": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Cantidad": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "CostoUnitario": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Promedio": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Debe": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Haber": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Saldo": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Producto": {
+            "$ref": "#/components/schemas/Producto"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LecturaSensor": {
+        "required": [
+          "SensorID",
+          "Valor"
+        ],
+        "type": "object",
+        "properties": {
+          "LecturaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "SensorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Timestamp": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Valor": {
+            "type": "number",
+            "format": "double"
+          },
+          "Sensor": {
+            "$ref": "#/components/schemas/Sensor"
+          }
+        },
+        "additionalProperties": false
+      },
+      "LoginRequestDto": {
+        "required": [
+          "Contrasena",
+          "Correo"
+        ],
+        "type": "object",
+        "properties": {
+          "Correo": {
             "minLength": 1,
             "type": "string",
             "format": "email"
           },
-          "contrasena": {
+          "Contrasena": {
             "minLength": 1,
             "type": "string"
           }
@@ -1997,25 +3609,26 @@
       "LoginResponseDto": {
         "type": "object",
         "properties": {
-          "jwtToken": {
+          "JwtToken": {
             "type": "string",
             "nullable": true
           },
-          "usuarioID": {
+          "UsuarioID": {
             "type": "integer",
             "format": "int32"
           },
-          "correo": {
+          "Correo": {
             "type": "string",
             "nullable": true
           },
-          "nombre": {
+          "Nombre": {
             "type": "string",
             "nullable": true
           }
         },
         "additionalProperties": false
       },
+<<<<<<< HEAD
       "MedidorSlotDto": {
         "type": "object",
         "properties": {
@@ -2027,10 +3640,36 @@
             "type": "boolean"
           },
           "cultivoID": {
+=======
+      "Modulo": {
+        "required": [
+          "NombreModulo",
+          "UsuarioID"
+        ],
+        "type": "object",
+        "properties": {
+          "ModuloID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NombreModulo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Estado": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "DiasEnFuncionamiento": {
+>>>>>>> 5068e04d6e7438bb1d795a8c26c9fa93b909ec83
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
+<<<<<<< HEAD
           "cultivoNombre": {
             "type": "string",
             "nullable": true
@@ -2043,6 +3682,29 @@
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/SensorLecturaDto"
+=======
+          "CantidadCultivosActual": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "CantidadCultivosMax": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "Sensores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Sensor"
+>>>>>>> 5068e04d6e7438bb1d795a8c26c9fa93b909ec83
             },
             "nullable": true
           }
@@ -2051,20 +3713,20 @@
       },
       "ModuloCreateDto": {
         "required": [
-          "nombreModulo"
+          "NombreModulo"
         ],
         "type": "object",
         "properties": {
-          "nombreModulo": {
+          "NombreModulo": {
             "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "estado": {
+          "Estado": {
             "type": "string",
             "nullable": true
           },
-          "diasEnFuncionamiento": {
+          "DiasEnFuncionamiento": {
             "type": "integer",
             "format": "int32"
           }
@@ -2074,29 +3736,83 @@
       "ModuloListDto": {
         "type": "object",
         "properties": {
-          "moduloID": {
+          "ModuloID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombreModulo": {
+          "NombreModulo": {
             "type": "string",
             "nullable": true
           },
-          "estado": {
+          "Estado": {
             "type": "string",
             "nullable": true
           },
-          "diasEnFuncionamiento": {
+          "DiasEnFuncionamiento": {
             "type": "integer",
             "format": "int32"
           },
-          "cantidadCultivosActual": {
+          "CantidadCultivosActual": {
             "type": "integer",
             "format": "int32"
           },
-          "cantidadCultivosMax": {
+          "CantidadCultivosMax": {
             "type": "integer",
             "format": "int32"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Notificacion": {
+        "required": [
+          "Mensaje",
+          "TipoNotificacion",
+          "UsuarioID"
+        ],
+        "type": "object",
+        "properties": {
+          "NotificacionID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "TipoNotificacion": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Mensaje": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "FechaHoraEnvio": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Leida": {
+            "type": "boolean"
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "SensorID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          },
+          "Sensor": {
+            "$ref": "#/components/schemas/Sensor"
           }
         },
         "additionalProperties": false
@@ -2128,26 +3844,165 @@
         },
         "additionalProperties": { }
       },
-      "RecetaCreateDto": {
+      "Producto": {
+        "type": "object",
+        "properties": {
+          "ProductoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Nombre": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "Precio": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "ImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "Stock": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Unidad": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "DetalleCompras": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetalleCompra"
+            },
+            "nullable": true
+          },
+          "DetalleVentas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetalleVenta"
+            },
+            "nullable": true
+          },
+          "Kardex": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Kardex"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Proveedor": {
+        "type": "object",
+        "properties": {
+          "ProveedorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NombreEmpresa": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Contacto": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Telefono": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Email": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "Direccion": {
+            "type": "string",
+            "nullable": true
+          },
+          "Compras": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Compra"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Receta": {
         "required": [
-          "nombreReceta"
+          "NombreReceta"
         ],
         "type": "object",
         "properties": {
-          "nombreReceta": {
+          "RecetaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NombreReceta": {
             "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "descripcion": {
+          "Descripcion": {
             "type": "string",
             "nullable": true
           },
-          "instrucciones": {
+          "Instrucciones": {
             "type": "string",
             "nullable": true
           },
-          "cultivoIDs": {
+          "RecetasCultivos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/RecetasCultivo"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "RecetaCreateDto": {
+        "required": [
+          "NombreReceta"
+        ],
+        "type": "object",
+        "properties": {
+          "NombreReceta": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Descripcion": {
+            "type": "string",
+            "nullable": true
+          },
+          "Instrucciones": {
+            "type": "string",
+            "nullable": true
+          },
+          "CultivoIDs": {
             "type": "array",
             "items": {
               "type": "integer",
@@ -2161,23 +4016,23 @@
       "RecetaDetailDto": {
         "type": "object",
         "properties": {
-          "recetaID": {
+          "RecetaID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombreReceta": {
+          "NombreReceta": {
             "type": "string",
             "nullable": true
           },
-          "descripcion": {
+          "Descripcion": {
             "type": "string",
             "nullable": true
           },
-          "instrucciones": {
+          "Instrucciones": {
             "type": "string",
             "nullable": true
           },
-          "cultivosNecesarios": {
+          "CultivosNecesarios": {
             "type": "array",
             "items": {
               "$ref": "#/components/schemas/CultivoEnRecetaDto"
@@ -2190,15 +4045,15 @@
       "RecetaListDto": {
         "type": "object",
         "properties": {
-          "recetaID": {
+          "RecetaID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombreReceta": {
+          "NombreReceta": {
             "type": "string",
             "nullable": true
           },
-          "descripcionCorta": {
+          "DescripcionCorta": {
             "type": "string",
             "nullable": true
           }
@@ -2207,24 +4062,24 @@
       },
       "RecetaUpdateDto": {
         "required": [
-          "nombreReceta"
+          "NombreReceta"
         ],
         "type": "object",
         "properties": {
-          "nombreReceta": {
+          "NombreReceta": {
             "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "descripcion": {
+          "Descripcion": {
             "type": "string",
             "nullable": true
           },
-          "instrucciones": {
+          "Instrucciones": {
             "type": "string",
             "nullable": true
           },
-          "cultivoIDs": {
+          "CultivoIDs": {
             "type": "array",
             "items": {
               "type": "integer",
@@ -2235,26 +4090,46 @@
         },
         "additionalProperties": false
       },
+      "RecetasCultivo": {
+        "type": "object",
+        "properties": {
+          "RecetaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Receta": {
+            "$ref": "#/components/schemas/Receta"
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          }
+        },
+        "additionalProperties": false
+      },
       "RegisterRequestDto": {
         "required": [
-          "contrasena",
-          "correo",
-          "nombre"
+          "Contrasena",
+          "Correo",
+          "Nombre"
         ],
         "type": "object",
         "properties": {
-          "nombre": {
+          "Nombre": {
             "maxLength": 255,
             "minLength": 0,
             "type": "string"
           },
-          "correo": {
+          "Correo": {
             "maxLength": 255,
             "minLength": 0,
             "type": "string",
             "format": "email"
           },
-          "contrasena": {
+          "Contrasena": {
             "maxLength": 255,
             "minLength": 6,
             "type": "string"
@@ -2262,68 +4137,146 @@
         },
         "additionalProperties": false
       },
-      "SensorDetailDto": {
+      "Sensor": {
+        "required": [
+          "MedidorSlotIndex",
+          "ModuloID",
+          "TipoSensor"
+        ],
         "type": "object",
         "properties": {
-          "sensorID": {
+          "SensorID": {
             "type": "integer",
             "format": "int32"
           },
-          "moduloNombre": {
-            "type": "string",
-            "nullable": true
+          "ModuloID": {
+            "type": "integer",
+            "format": "int32"
           },
-          "tipoSensor": {
-            "type": "string",
-            "nullable": true
-          },
-          "unidadMedida": {
-            "type": "string",
-            "nullable": true
-          },
-          "valorLectura": {
-            "type": "number",
-            "format": "double",
-            "nullable": true
-          },
-          "ultimaLectura": {
-            "type": "string",
-            "format": "date-time",
-            "nullable": true
-          },
-          "estadoRiego": {
-            "type": "string",
-            "nullable": true
-          },
-          "esAcuaHidroponico": {
-            "type": "boolean"
-          },
-          "cultivoID": {
+          "CultivoID": {
             "type": "integer",
             "format": "int32",
             "nullable": true
           },
-          "cultivoNombre": {
+          "TipoSensor": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "MedidorSlotIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "UnidadMedida": {
+            "maxLength": 10,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
-          "cultivoImagenURL": {
+          "UltimaLectura": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "ValorLectura": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "EstadoRiego": {
+            "maxLength": 50,
+            "minLength": 0,
             "type": "string",
             "nullable": true
           },
-          "cultivoRequisitosClima": {
+          "EsAcuaHidroponico": {
+            "type": "boolean"
+          },
+          "Modulo": {
+            "$ref": "#/components/schemas/Modulo"
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          },
+          "LecturasSensores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/LecturaSensor"
+            },
+            "nullable": true
+          },
+          "Notificaciones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notificacion"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "SensorDetailDto": {
+        "type": "object",
+        "properties": {
+          "SensorID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ModuloNombre": {
             "type": "string",
             "nullable": true
           },
-          "cultivoRequisitosAgua": {
+          "TipoSensor": {
             "type": "string",
             "nullable": true
           },
-          "cultivoRequisitosLuz": {
+          "UnidadMedida": {
             "type": "string",
             "nullable": true
           },
-          "tipsParaEstaPlanta": {
+          "ValorLectura": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "UltimaLectura": {
+            "type": "string",
+            "format": "date-time",
+            "nullable": true
+          },
+          "EstadoRiego": {
+            "type": "string",
+            "nullable": true
+          },
+          "EsAcuaHidroponico": {
+            "type": "boolean"
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "CultivoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "CultivoImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "CultivoRequisitosClima": {
+            "type": "string",
+            "nullable": true
+          },
+          "CultivoRequisitosAgua": {
+            "type": "string",
+            "nullable": true
+          },
+          "CultivoRequisitosLuz": {
+            "type": "string",
+            "nullable": true
+          },
+          "TipsParaEstaPlanta": {
             "type": "array",
             "items": {
               "type": "string"
@@ -2336,25 +4289,184 @@
       "SensorLecturaDto": {
         "type": "object",
         "properties": {
-          "sensorID": {
+          "SensorID": {
             "type": "integer",
             "format": "int32"
           },
-          "tipoSensor": {
+          "TipoSensor": {
             "type": "string",
             "nullable": true
           },
-          "unidadMedida": {
+          "UnidadMedida": {
             "type": "string",
             "nullable": true
           },
-          "valorLectura": {
+          "ValorLectura": {
             "type": "number",
             "format": "double",
             "nullable": true
           },
-          "estadoRiego": {
+          "EstadoRiego": {
             "type": "string",
+            "nullable": true
+<<<<<<< HEAD
+=======
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "CultivoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "CultivoImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "EnUso": {
+            "type": "boolean",
+            "readOnly": true
+>>>>>>> 5068e04d6e7438bb1d795a8c26c9fa93b909ec83
+          }
+        },
+        "additionalProperties": false
+      },
+      "Temporada": {
+        "required": [
+          "NombreTemporada"
+        ],
+        "type": "object",
+        "properties": {
+          "TemporadaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "NombreTemporada": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string"
+          },
+          "CultivosTemporadas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/CultivosTemporada"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "TipsCultivo": {
+        "required": [
+          "CultivoID",
+          "DescripcionTip"
+        ],
+        "type": "object",
+        "properties": {
+          "TipID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "CultivoID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "DescripcionTip": {
+            "minLength": 1,
+            "type": "string"
+          },
+          "FechaCreacion": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "Cultivo": {
+            "$ref": "#/components/schemas/Cultivo"
+          },
+          "Usuario": {
+            "$ref": "#/components/schemas/Usuario"
+          }
+        },
+        "additionalProperties": false
+      },
+      "Usuario": {
+        "required": [
+          "Correo",
+          "Nombre"
+        ],
+        "type": "object",
+        "properties": {
+          "UsuarioID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "Nombre": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "Correo": {
+            "maxLength": 255,
+            "minLength": 0,
+            "type": "string"
+          },
+          "TipoUsuario": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "RolUsuario": {
+            "maxLength": 50,
+            "minLength": 0,
+            "type": "string",
+            "nullable": true
+          },
+          "EmailConfirmado": {
+            "type": "boolean"
+          },
+          "Modulos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Modulo"
+            },
+            "nullable": true
+          },
+          "TipsCultivos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/TipsCultivo"
+            },
+            "nullable": true
+          },
+          "Favoritos": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Favorito"
+            },
+            "nullable": true
+          },
+          "Notificaciones": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/Notificacion"
+            },
+            "nullable": true
+          },
+          "ConfiguracionNotificaciones": {
+            "$ref": "#/components/schemas/ConfiguracionNotificacion"
+          },
+          "ComentariosBlog": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/ComentarioBlog"
+            },
             "nullable": true
           }
         },
@@ -2363,16 +4475,86 @@
       "UsuarioProfileDto": {
         "type": "object",
         "properties": {
-          "usuarioID": {
+          "UsuarioID": {
             "type": "integer",
             "format": "int32"
           },
-          "nombreUsuario": {
+          "NombreUsuario": {
             "type": "string",
             "nullable": true
           },
-          "correo": {
+          "Correo": {
             "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioRegistroDto": {
+        "type": "object",
+        "properties": {
+          "Nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "Correo": {
+            "type": "string",
+            "nullable": true
+          },
+          "Contrasena": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "UsuarioUpdateDto": {
+        "type": "object",
+        "properties": {
+          "Nombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "Rol": {
+            "type": "string",
+            "nullable": true
+          },
+          "Contrasena": {
+            "type": "string",
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
+      "Venta": {
+        "type": "object",
+        "properties": {
+          "VentaID": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "ClienteID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "FechaVenta": {
+            "type": "string",
+            "format": "date-time"
+          },
+          "Total": {
+            "type": "number",
+            "format": "double",
+            "nullable": true
+          },
+          "Cliente": {
+            "$ref": "#/components/schemas/Cliente"
+          },
+          "DetalleVentas": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/DetalleVenta"
+            },
             "nullable": true
           }
         },
@@ -2382,7 +4564,7 @@
     "securitySchemes": {
       "Bearer": {
         "type": "apiKey",
-        "description": "Encabezado de autorización JWT usando el esquema Bearer. Ejemplo: \"Authorization: Bearer {token}\"",
+        "description": "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
         "name": "Authorization",
         "in": "header"
       }

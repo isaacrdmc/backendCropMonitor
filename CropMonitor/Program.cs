@@ -10,13 +10,24 @@ using System.Text;
 
 var builder = WebApplication.CreateBuilder(args);
 
-// Añadir servicios al contenedor.
+// Configuración de la base de datos
 builder.Services.AddDbContext<CropMonitorDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
 
 builder.Services.AddScoped<IPasswordHasher<Usuario>, PasswordHasher<Usuario>>();
 
-// Configurar Autenticación JWT
+// Configuración de CORS (ajusta según tus necesidades)
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowWebApp", policy =>
+    {
+        policy.WithOrigins("https://tudominio.com")
+              .AllowAnyHeader()
+              .AllowAnyMethod();
+    });
+});
+
+// Configuración de Autenticación JWT
 builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
     .AddJwtBearer(options =>
     {
@@ -32,21 +43,38 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
-builder.Services.AddAuthorization();
-builder.Services.AddControllers();
+// Configuración de Autorización con políticas
+builder.Services.AddAuthorization(options =>
+{
+    options.AddPolicy("AdminOnly", policy => policy.RequireRole("AdminWeb"));
+    options.AddPolicy("ContentManagers", policy => policy.RequireRole("AdminWeb", "ContentEditor"));
+    options.AddPolicy("InventoryManagers", policy => policy.RequireRole("AdminWeb", "InventoryManager"));
+    options.AddPolicy("SalesManagers", policy => policy.RequireRole("AdminWeb", "SalesManager"));
+});
+
+// Configuración de Controladores
+builder.Services.AddControllers()
+    .AddJsonOptions(options =>
+    {
+        options.JsonSerializerOptions.PropertyNamingPolicy = null; // Mantener naming exacto
+    });
+
+// Configuración de Swagger
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
 {
     c.SwaggerDoc("v1", new OpenApiInfo { Title = "Crop Monitor API", Version = "v1" });
-    // Añadir autenticación JWT a Swagger
+
+    // Configuración de seguridad JWT en Swagger
     c.AddSecurityDefinition("Bearer", new OpenApiSecurityScheme
     {
-        Description = "Encabezado de autorización JWT usando el esquema Bearer. Ejemplo: \"Authorization: Bearer {token}\"",
+        Description = "JWT Authorization header using the Bearer scheme. Example: \"Authorization: Bearer {token}\"",
         Name = "Authorization",
         In = ParameterLocation.Header,
         Type = SecuritySchemeType.ApiKey,
         Scheme = "Bearer"
     });
+
     c.AddSecurityRequirement(new OpenApiSecurityRequirement
     {
         {
@@ -58,29 +86,47 @@ builder.Services.AddSwaggerGen(c =>
                     Id = "Bearer"
                 }
             },
-            new string[] {}
+            Array.Empty<string>()
         }
     });
-});
 
+    // Opcional: Organizar por tags
+    c.TagActionsBy(api => new[] { api.GroupName });
+    c.DocInclusionPredicate((name, api) => true);
+});
 
 var app = builder.Build();
 
-
+// Configuración del pipeline HTTP
 if (app.Environment.IsDevelopment())
 {
     app.UseSwagger();
-    app.UseSwaggerUI();
+    app.UseSwaggerUI(c =>
+    {
+        c.SwaggerEndpoint("/swagger/v1/swagger.json", "Crop Monitor API v1");
+        c.RoutePrefix = "api-docs";
+    });
 }
 
 app.UseHttpsRedirection();
 
+// Servir archivos estáticos
+app.UseStaticFiles();
 
-app.UseStaticFiles(); // Permite servir archivos desde wwwroot
+// Habilitar CORS
+app.UseCors("AllowWebApp");
 
+// Autenticación y Autorización
 app.UseAuthentication();
 app.UseAuthorization();
 
+// Mapeo de controladores
 app.MapControllers();
+
+// Opcional: Redirección a Swagger en desarrollo
+if (app.Environment.IsDevelopment())
+{
+    app.MapGet("/", () => Results.Redirect("/api-docs"));
+}
 
 app.Run();

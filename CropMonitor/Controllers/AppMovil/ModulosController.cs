@@ -10,9 +10,9 @@ using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
 
-namespace CropMonitorApi.Controllers
+namespace CropMonitor.Controllers.AppMovil
 {
-    [Route("api/[controller]")]
+    [Route("api/mobile/[controller]")]
     [ApiController]
     [Authorize]
     public class ModulosController : ControllerBase
@@ -115,7 +115,7 @@ namespace CropMonitorApi.Controllers
                         UnidadMedida = sensorType.Unidad,
                         UltimaLectura = null,
                         ValorLectura = null,
-                        EstadoRiego = (sensorType.Tipo == "Humedad") ? "Inactivo" : "N/A",
+                        EstadoRiego = sensorType.Tipo == "Humedad" ? "Inactivo" : "N/A",
                         EsAcuaHidroponico = false,
                         CultivoID = null,
                         MedidorSlotIndex = i
