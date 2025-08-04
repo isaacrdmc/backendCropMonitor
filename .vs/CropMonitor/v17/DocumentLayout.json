@@ -3,52 +3,52 @@
   "WorkspaceRootPath": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\controllers\\recetascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\controllers\\recetascontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\controllers\\cultivoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\controllers\\cultivoscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\data\\cropmonitorcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\data\\cropmonitorcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\sensores\\sensorinmodulodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\sensores\\sensorinmodulodto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\models\\appmovil\\cultivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\models\\appmovil\\cultivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\controllers\\moduloscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\controllers\\moduloscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\recetas\\recetaupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\recetas\\recetaupdatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\sensores\\sensordetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\sensores\\sensordetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\recetas\\recetacreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\recetas\\recetacreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\modulos\\medidorslotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\modulos\\medidorslotdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\recetas\\recetadetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\recetas\\recetadetaildto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\modulos\\modulolistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\modulos\\modulolistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\recetas\\recetalistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\recetas\\recetalistdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\modulos\\modulocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\modulos\\modulocreatedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\models\\appmovil\\recetascultivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\models\\appmovil\\recetascultivo.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\auth\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\auth\\loginresponsedto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\models\\appmovil\\receta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\models\\appmovil\\receta.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\models\\appmovil\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\models\\appmovil\\usuario.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\auth\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\auth\\registerrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\dtos\\auth\\loginrequestdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\controllers\\authcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|c:\\users\\pezca\\source\\repos\\cropmonitor\\cropmonitor\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{CDC97C38-E808-4010-8331-B541276D401A}|CropMonitor\\CropMonitor.csproj|solutionrelative:cropmonitor\\controllers\\usuarioscontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -58,164 +58,8 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 1,
+          "SelectedChildIndex": 9,
           "Children": [
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Cultivo.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\Cultivo.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Models\\AppMovil\\Cultivo.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\Cultivo.cs",
-              "RelativeToolTip": "CropMonitor\\Models\\AppMovil\\Cultivo.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAAQwAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:54:20.387Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 0,
-              "Title": "RecetasController.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\RecetasController.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Controllers\\RecetasController.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\RecetasController.cs",
-              "RelativeToolTip": "CropMonitor\\Controllers\\RecetasController.cs",
-              "ViewState": "AgIAALwAAAAAAAAAAAAQwNsAAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:53:32.887Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "RecetaUpdateDto.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaUpdateDto.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Recetas\\RecetaUpdateDto.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaUpdateDto.cs",
-              "RelativeToolTip": "CropMonitor\\DTOs\\Recetas\\RecetaUpdateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:52:56.826Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "RecetaCreateDto.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaCreateDto.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Recetas\\RecetaCreateDto.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaCreateDto.cs",
-              "RelativeToolTip": "CropMonitor\\DTOs\\Recetas\\RecetaCreateDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:52:16.973Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "RecetaDetailDto.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaDetailDto.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Recetas\\RecetaDetailDto.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaDetailDto.cs",
-              "RelativeToolTip": "CropMonitor\\DTOs\\Recetas\\RecetaDetailDto.cs",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAABAAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:51:31.23Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "RecetaListDto.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaListDto.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Recetas\\RecetaListDto.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Recetas\\RecetaListDto.cs",
-              "RelativeToolTip": "CropMonitor\\DTOs\\Recetas\\RecetaListDto.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:51:00.688Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "CropMonitorContext.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Data\\CropMonitorContext.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Data\\CropMonitorContext.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Data\\CropMonitorContext.cs",
-              "RelativeToolTip": "CropMonitor\\Data\\CropMonitorContext.cs",
-              "ViewState": "AgIAABAAAAAAAAAAAAA0wH8AAAAxAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:47:45.924Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "RecetasCultivo.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\RecetasCultivo.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Models\\AppMovil\\RecetasCultivo.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\RecetasCultivo.cs",
-              "RelativeToolTip": "CropMonitor\\Models\\AppMovil\\RecetasCultivo.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABcAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:46:15.584Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "Receta.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\Receta.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Models\\AppMovil\\Receta.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\Receta.cs",
-              "RelativeToolTip": "CropMonitor\\Models\\AppMovil\\Receta.cs",
-              "ViewState": "AgIAAAEAAAAAAAAAAAAqwBkAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:45:53.15Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "AuthController.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\AuthController.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Controllers\\AuthController.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\AuthController.cs",
-              "RelativeToolTip": "CropMonitor\\Controllers\\AuthController.cs",
-              "ViewState": "AgIAAA8AAAAAAAAAAAAAAB8AAAArAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:24:21.899Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "Program.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Program.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Program.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Program.cs",
-              "RelativeToolTip": "CropMonitor\\Program.cs",
-              "ViewState": "AgIAADgAAAAAAAAAAAAgwFUAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T03:22:52.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "UsuariosController.cs",
-              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\UsuariosController.cs",
-              "RelativeDocumentMoniker": "CropMonitor\\Controllers\\UsuariosController.cs",
-              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\UsuariosController.cs",
-              "RelativeToolTip": "CropMonitor\\Controllers\\UsuariosController.cs",
-              "ViewState": "AgIAAHUAAAAAAAAAAAAYwJEAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2025-07-31T02:53:39.529Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{cce594b6-0c39-4442-ba28-10c64ac7e89f}"
@@ -227,6 +71,152 @@
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{eefa5220-e298-11d0-8f78-00a0c9110057}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "SensorInModuloDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Sensores\\SensorInModuloDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Sensores\\SensorInModuloDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Sensores\\SensorInModuloDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Sensores\\SensorInModuloDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T05:42:58.793Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "MedidorSlotDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Modulos\\MedidorSlotDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Modulos\\MedidorSlotDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Modulos\\MedidorSlotDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Modulos\\MedidorSlotDto.cs",
+              "ViewState": "AgIAAAoAAAAAAAAAAAAUwBoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T05:42:16.577Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "SensorDetailDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Sensores\\SensorDetailDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Sensores\\SensorDetailDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Sensores\\SensorDetailDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Sensores\\SensorDetailDto.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwBgAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T05:42:14.441Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Usuario.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\Usuario.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\Models\\AppMovil\\Usuario.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Models\\AppMovil\\Usuario.cs",
+              "RelativeToolTip": "CropMonitor\\Models\\AppMovil\\Usuario.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAC0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T04:23:54.793Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ModulosController.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\ModulosController.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\Controllers\\ModulosController.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\ModulosController.cs",
+              "RelativeToolTip": "CropMonitor\\Controllers\\ModulosController.cs",
+              "ViewState": "AgIAAHABAAAAAAAAAAAYwIgBAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T01:48:20.051Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "RegisterRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Auth\\RegisterRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T04:23:38.663Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "CultivosController.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\CultivosController.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\Controllers\\CultivosController.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\CultivosController.cs",
+              "RelativeToolTip": "CropMonitor\\Controllers\\CultivosController.cs",
+              "ViewState": "AgIAAIUAAAAAAAAAAAAiwBcCAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T04:22:57.323Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "ModuloCreateDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Modulos\\ModuloCreateDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Modulos\\ModuloCreateDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Modulos\\ModuloCreateDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Modulos\\ModuloCreateDto.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBMAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T05:42:18.95Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ModuloListDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Modulos\\ModuloListDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Modulos\\ModuloListDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Modulos\\ModuloListDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Modulos\\ModuloListDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T05:42:40.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "LoginResponseDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Auth\\LoginResponseDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Auth\\LoginResponseDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Auth\\LoginResponseDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Auth\\LoginResponseDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T04:23:16.462Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "LoginRequestDto.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\DTOs\\Auth\\LoginRequestDto.cs",
+              "RelativeToolTip": "CropMonitor\\DTOs\\Auth\\LoginRequestDto.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T04:23:17.479Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "AuthController.cs",
+              "DocumentMoniker": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\AuthController.cs",
+              "RelativeDocumentMoniker": "CropMonitor\\Controllers\\AuthController.cs",
+              "ToolTip": "C:\\Users\\pezca\\source\\repos\\CropMonitor\\CropMonitor\\Controllers\\AuthController.cs",
+              "RelativeToolTip": "CropMonitor\\Controllers\\AuthController.cs",
+              "ViewState": "AgIAAHIAAAAAAAAAAAAYwIoAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2025-08-03T04:22:58.44Z"
             }
           ]
         }

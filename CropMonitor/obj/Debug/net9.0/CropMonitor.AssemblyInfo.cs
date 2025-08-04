@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("CropMonitor")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+4751cad9b93164b2f1d5e9a86f254f35196682f5")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+6115c6eee2254a80e9ca16c97d7ea099579264c6")]
 [assembly: System.Reflection.AssemblyProductAttribute("CropMonitor")]
 [assembly: System.Reflection.AssemblyTitleAttribute("CropMonitor")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

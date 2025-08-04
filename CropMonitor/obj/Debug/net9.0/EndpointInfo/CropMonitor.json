@@ -942,7 +942,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SensorInModuloDto"
+                    "$ref": "#/components/schemas/MedidorSlotDto"
                   }
                 }
               },
@@ -950,7 +950,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SensorInModuloDto"
+                    "$ref": "#/components/schemas/MedidorSlotDto"
                   }
                 }
               },
@@ -958,7 +958,7 @@
                 "schema": {
                   "type": "array",
                   "items": {
-                    "$ref": "#/components/schemas/SensorInModuloDto"
+                    "$ref": "#/components/schemas/MedidorSlotDto"
                   }
                 }
               }
@@ -2016,6 +2016,39 @@
         },
         "additionalProperties": false
       },
+      "MedidorSlotDto": {
+        "type": "object",
+        "properties": {
+          "medidorSlotIndex": {
+            "type": "integer",
+            "format": "int32"
+          },
+          "enUso": {
+            "type": "boolean"
+          },
+          "cultivoID": {
+            "type": "integer",
+            "format": "int32",
+            "nullable": true
+          },
+          "cultivoNombre": {
+            "type": "string",
+            "nullable": true
+          },
+          "cultivoImagenURL": {
+            "type": "string",
+            "nullable": true
+          },
+          "sensores": {
+            "type": "array",
+            "items": {
+              "$ref": "#/components/schemas/SensorLecturaDto"
+            },
+            "nullable": true
+          }
+        },
+        "additionalProperties": false
+      },
       "ModuloCreateDto": {
         "required": [
           "nombreModulo"
@@ -2300,7 +2333,7 @@
         },
         "additionalProperties": false
       },
-      "SensorInModuloDto": {
+      "SensorLecturaDto": {
         "type": "object",
         "properties": {
           "sensorID": {
@@ -2323,23 +2356,6 @@
           "estadoRiego": {
             "type": "string",
             "nullable": true
-          },
-          "cultivoID": {
-            "type": "integer",
-            "format": "int32",
-            "nullable": true
-          },
-          "cultivoNombre": {
-            "type": "string",
-            "nullable": true
-          },
-          "cultivoImagenURL": {
-            "type": "string",
-            "nullable": true
-          },
-          "enUso": {
-            "type": "boolean",
-            "readOnly": true
           }
         },
         "additionalProperties": false
