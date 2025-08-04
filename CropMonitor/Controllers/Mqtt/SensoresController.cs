@@ -3,6 +3,7 @@
 
 // Creamos el espacio para los endpoints del MQTT
 using CropMonitor.Data;
+using CropMonitor.Models.AppMovil;
 using CropMonitor.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
@@ -10,9 +11,9 @@ using Microsoft.Identity.Client;
 
 namespace CropMonitor.Controllers.Mqtt
 {
-        // 
-        [ApiController]
-        [Route("api/[controller]")]
+    // 
+    [ApiController]
+    [Route("api/[controller]")]
     public class SensoresController : ControllerBase
     {
 
@@ -30,7 +31,7 @@ namespace CropMonitor.Controllers.Mqtt
 
 
         // Endpoint para recibir lecturas del sensor:
-        [HttpGet("Lecturas")]
+        [HttpGet("lecturas")]
         public async Task<IActionResult> GetLecturas()
         {
             // 
@@ -44,7 +45,37 @@ namespace CropMonitor.Controllers.Mqtt
                 })
                 .ToListAsync();
 
-            return Ok(lecturas);
+
+
+
+            // Estructuramos los JSON de la salida:
+            var sonico = lecturas
+                .FirstOrDefault(s => s.TipoSensor == "Nivel agua");
+            var humedad = lecturas
+                .Where(s => s.TipoSensor == "Humedad del suelo")
+                .ToList();
+            var temperatura = lecturas
+                .Where(s => s.TipoSensor == "Temperatura")
+                .ToList();
+            var luz = lecturas
+                .Where(s => s.TipoSensor == "Luz")
+                .ToList();
+            var riego = lecturas
+                .Where(s => s.TipoSensor == "Salida de riego")
+                .ToList();
+
+
+            var respuesta = new
+            {
+                Sonico = sonico,
+                Humedad = humedad,
+                Temperatura = temperatura,
+                Luz = luz,
+                Riego = riego
+            };
+
+
+            return Ok(respuesta);
         }
 
         // Endpoint para recibir notificaciones de sensores
@@ -62,6 +93,9 @@ namespace CropMonitor.Controllers.Mqtt
 
             return Ok(new { status = "Comando enviado" });
         }
+
+
+
 
         // Clase interna para manejar la solicitud de encendido de bomba
         public class BombaRequest
