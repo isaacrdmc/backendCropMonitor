@@ -71,19 +71,25 @@ namespace CropMonitor.Services
 
 
                         // Nos suscribimos a los topics de entradas:
-                        string[] topics = {
-                            "valor-humedad-1", "valor-humedad-2", "valor-humedad-3", "valor-humedad-4",
-                            "valor-temperatura-1", "valor-temperatura-2", "valor-temperatura-3", "valor-temperatura-4"
-                        };
+
+                        // Usando el comodin "#" le indicamos que se suscriba a TODOS los topics del broker conectado
+                        await _mqttClient.SubscribeAsync("#");
 
 
-                        // Nos suscribimos a todos los topics de una vez
-                        foreach (var topic in topics)
-                        {
-                            // Nos suscribimos a cada topic
-                            await _mqttClient.SubscribeAsync(topic);
-                            
-                        }
+
+                        //string[] topics = {
+                        //    "valor-humedad-1", "valor-humedad-2", "valor-humedad-3", "valor-humedad-4",
+                        //    "valor-temperatura-1", "valor-temperatura-2", "valor-temperatura-3", "valor-temperatura-4"
+                        //};
+
+
+                        //// Nos suscribimos a todos los topics de una vez
+                        //foreach (var topic in topics)
+                        //{
+                        //    // Nos suscribimos a cada topic
+                        //    await _mqttClient.SubscribeAsync(topic);
+
+                        //}
 
                         Console.WriteLine("## Subscrito a los topics ###");
                     }
@@ -228,7 +234,7 @@ namespace CropMonitor.Services
 
                         "valor-sonico" => 17,
 
-                        _ => 0
+                        _ => 0      // Ignoramos los valores que no necesitmaos guardar
                     };
 
                     // 

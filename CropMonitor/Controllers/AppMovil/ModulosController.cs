@@ -97,6 +97,8 @@ namespace CropMonitor.Controllers.AppMovil
             _context.Modulos.Add(nuevoModulo);
             await _context.SaveChangesAsync();
 
+            // Listamos los tipos de sensores y sus unidades,
+            // los cuales se guardaran en la BD automáticmante
             var sensorTypes = new List<(string Tipo, string Unidad)>
             {
                 ("Temperatura", "°C"),
@@ -104,6 +106,7 @@ namespace CropMonitor.Controllers.AppMovil
                 ("Luz", "Lux")
             };
 
+            // Recorremos el número máximo de cultivos y agregamos los sensores correspondientes
             for (int i = 0; i < nuevoModulo.CantidadCultivosMax; i++)
             {
                 foreach (var sensorType in sensorTypes)
@@ -122,8 +125,11 @@ namespace CropMonitor.Controllers.AppMovil
                     });
                 }
             }
+            // Guardamos los cambios dentro de la BD
             await _context.SaveChangesAsync();
 
+
+            // Creamos el DTO de la respuesta
             var responseDto = new ModuloListDto
             {
                 ModuloID = nuevoModulo.ModuloID,
@@ -208,6 +214,7 @@ namespace CropMonitor.Controllers.AppMovil
                 }
             }
 
+            // Retornamos la lista de slots con sus sensores
             return Ok(slots);
         }
 
@@ -230,7 +237,7 @@ namespace CropMonitor.Controllers.AppMovil
             var sensor = await _context.Sensores
                                        .Include(s => s.Modulo)
                                        .Include(s => s.Cultivo)
-                                            .ThenInclude(c => c.TipsCultivos)
+                                        .ThenInclude(c => c.TipsCultivos)
                                        .Where(s => s.SensorID == sensorId && s.Modulo.UsuarioID == userId)
                                        .FirstOrDefaultAsync();
 
@@ -239,6 +246,8 @@ namespace CropMonitor.Controllers.AppMovil
                 return NotFound($"Sensor con ID {sensorId} no encontrado o no pertenece a un módulo del usuario.");
             }
 
+
+            // Mapear el sensor a un DTO de detalle
             var sensorDetailDto = new SensorDetailDto
             {
                 SensorID = sensor.SensorID,
@@ -260,6 +269,8 @@ namespace CropMonitor.Controllers.AppMovil
                 TipsParaEstaPlanta = sensor.Cultivo?.TipsCultivos?.Select(t => t.DescripcionTip).ToList() ?? new List<string>()
             };
 
+
+            // Retornamos el DTO con los detalles del sensor
             return Ok(sensorDetailDto);
         }
 
