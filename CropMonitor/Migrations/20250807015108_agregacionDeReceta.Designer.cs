@@ -4,6 +4,7 @@ using CropMonitor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CropMonitor.Migrations
 {
     [DbContext(typeof(CropMonitorDbContext))]
-    partial class CropMonitorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250807015108_agregacionDeReceta")]
+    partial class agregacionDeReceta
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

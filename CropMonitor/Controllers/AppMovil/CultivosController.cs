@@ -90,7 +90,7 @@ namespace CropMonitor.Controllers.AppMovil
                 CultivoID = c.CultivoID,
                 Nombre = c.Nombre,
                 Descripcion = c.Descripcion, // Usar la descripción existente
-                ImagenURL = c.ImagenURL != null ? $"/{c.ImagenURL.Replace("\\", "/")}" : null, // Asegura URL relativa correcta
+                ImagenURL = c.ImagenURL != null ? c.ImagenURL : null, // Asegura URL relativa correcta
                 EsFavorito = favoritosUsuario.Contains(c.CultivoID), // Verifica si el ID del cultivo está en la lista de favoritos
                 Temporadas = c.CultivosTemporadas.Select(ct => ct.Temporada.NombreTemporada).ToList() // Nombres de las temporadas asociadas
             }).ToList();
@@ -126,7 +126,7 @@ namespace CropMonitor.Controllers.AppMovil
             {
                 CultivoID = c.CultivoID,
                 Nombre = c.Nombre,
-                ImagenURL = c.ImagenURL != null ? $"/{c.ImagenURL.Replace("\\", "/")}" : null,
+                ImagenURL = c.ImagenURL != null ? c.ImagenURL : null,
                 Descripcion = c.Descripcion, // Usar la descripción existente del cultivo
                 EsFavorito = true, // Si está en esta lista, siempre es favorito
                 Temporadas = c.CultivosTemporadas.Select(ct => ct.Temporada.NombreTemporada).ToList()
@@ -177,7 +177,7 @@ namespace CropMonitor.Controllers.AppMovil
                 CultivoID = cultivo.CultivoID,
                 Nombre = cultivo.Nombre,
                 Descripcion = cultivo.Descripcion,
-                ImagenURL = cultivo.ImagenURL != null ? $"/{cultivo.ImagenURL.Replace("\\", "/")}" : null, // Asegura URL relativa correcta
+                ImagenURL = cultivo.ImagenURL != null ? cultivo.ImagenURL : null, // Asegura URL relativa correcta
                 RequisitosClima = cultivo.RequisitosClima,
                 RequisitosAgua = cultivo.RequisitosAgua,
                 RequisitosLuz = cultivo.RequisitosLuz,

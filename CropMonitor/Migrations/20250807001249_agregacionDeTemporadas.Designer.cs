@@ -4,6 +4,7 @@ using CropMonitor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CropMonitor.Migrations
 {
     [DbContext(typeof(CropMonitorDbContext))]
-    partial class CropMonitorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250807001249_agregacionDeTemporadas")]
+    partial class agregacionDeTemporadas
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -589,15 +592,6 @@ namespace CropMonitor.Migrations
                     b.HasKey("RecetaID");
 
                     b.ToTable("Recetas");
-
-                    b.HasData(
-                        new
-                        {
-                            RecetaID = 1,
-                            Descripcion = "Una ensalada sencilla, refrescante y llena de sabor, perfecta para un almuerzo ligero o como guarnición. Destaca la frescura del tomate y la albahaca, complementada con el toque picante de la rúcula.",
-                            Instrucciones = "1. Lava y seca bien la rúcula, los tomates cherry y las hojas de albahaca.\n2. Corta los tomates cherry por la mitad.\n3. En un bol grande, combina la rúcula y los tomates.\n4. Para el aderezo, mezcla aceite de oliva, vinagre balsámico, sal y pimienta al gusto. Emulsiona bien.\n5. Vierte el aderezo sobre la ensalada y mezcla suavemente.\n6. Espolvorea las hojas de albahaca fresca picada por encima y sirve de inmediato.",
-                            NombreReceta = "Ensalada Fresca de Tomate Cherry, Albahaca y Rúcula"
-                        });
                 });
 
             modelBuilder.Entity("CropMonitor.Models.AppMovil.RecetasCultivo", b =>
@@ -615,23 +609,6 @@ namespace CropMonitor.Migrations
                     b.HasIndex("CultivoID");
 
                     b.ToTable("Recetas_Cultivos");
-
-                    b.HasData(
-                        new
-                        {
-                            RecetaID = 1,
-                            CultivoID = 6
-                        },
-                        new
-                        {
-                            RecetaID = 1,
-                            CultivoID = 11
-                        },
-                        new
-                        {
-                            RecetaID = 1,
-                            CultivoID = 5
-                        });
                 });
 
             modelBuilder.Entity("CropMonitor.Models.AppMovil.Sensor", b =>
