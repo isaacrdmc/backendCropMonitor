@@ -4,6 +4,7 @@ using CropMonitor.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace CropMonitor.Migrations
 {
     [DbContext(typeof(CropMonitorDbContext))]
-    partial class CropMonitorDbContextModelSnapshot : ModelSnapshot
+    [Migration("20250806234147_agregacionDeCultivos")]
+    partial class agregacionDeCultivos
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -268,168 +271,6 @@ namespace CropMonitor.Migrations
                     b.HasIndex("TemporadaID");
 
                     b.ToTable("Cultivos_Temporadas");
-
-                    b.HasData(
-                        new
-                        {
-                            CultivoID = 1,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 2,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 3,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 4,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 5,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 6,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 7,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 8,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 9,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 10,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 11,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 13,
-                            TemporadaID = 1
-                        },
-                        new
-                        {
-                            CultivoID = 6,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 7,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 8,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 9,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 10,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 11,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 12,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 15,
-                            TemporadaID = 2
-                        },
-                        new
-                        {
-                            CultivoID = 1,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 2,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 3,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 4,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 5,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 13,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 14,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 15,
-                            TemporadaID = 3
-                        },
-                        new
-                        {
-                            CultivoID = 1,
-                            TemporadaID = 4
-                        },
-                        new
-                        {
-                            CultivoID = 2,
-                            TemporadaID = 4
-                        },
-                        new
-                        {
-                            CultivoID = 4,
-                            TemporadaID = 4
-                        },
-                        new
-                        {
-                            CultivoID = 15,
-                            TemporadaID = 4
-                        });
                 });
 
             modelBuilder.Entity("CropMonitor.Models.AppMovil.Favorito", b =>
@@ -589,15 +430,6 @@ namespace CropMonitor.Migrations
                     b.HasKey("RecetaID");
 
                     b.ToTable("Recetas");
-
-                    b.HasData(
-                        new
-                        {
-                            RecetaID = 1,
-                            Descripcion = "Una ensalada sencilla, refrescante y llena de sabor, perfecta para un almuerzo ligero o como guarnición. Destaca la frescura del tomate y la albahaca, complementada con el toque picante de la rúcula.",
-                            Instrucciones = "1. Lava y seca bien la rúcula, los tomates cherry y las hojas de albahaca.\n2. Corta los tomates cherry por la mitad.\n3. En un bol grande, combina la rúcula y los tomates.\n4. Para el aderezo, mezcla aceite de oliva, vinagre balsámico, sal y pimienta al gusto. Emulsiona bien.\n5. Vierte el aderezo sobre la ensalada y mezcla suavemente.\n6. Espolvorea las hojas de albahaca fresca picada por encima y sirve de inmediato.",
-                            NombreReceta = "Ensalada Fresca de Tomate Cherry, Albahaca y Rúcula"
-                        });
                 });
 
             modelBuilder.Entity("CropMonitor.Models.AppMovil.RecetasCultivo", b =>
@@ -615,23 +447,6 @@ namespace CropMonitor.Migrations
                     b.HasIndex("CultivoID");
 
                     b.ToTable("Recetas_Cultivos");
-
-                    b.HasData(
-                        new
-                        {
-                            RecetaID = 1,
-                            CultivoID = 6
-                        },
-                        new
-                        {
-                            RecetaID = 1,
-                            CultivoID = 11
-                        },
-                        new
-                        {
-                            RecetaID = 1,
-                            CultivoID = 5
-                        });
                 });
 
             modelBuilder.Entity("CropMonitor.Models.AppMovil.Sensor", b =>
@@ -700,28 +515,6 @@ namespace CropMonitor.Migrations
                     b.HasKey("TemporadaID");
 
                     b.ToTable("Temporadas");
-
-                    b.HasData(
-                        new
-                        {
-                            TemporadaID = 1,
-                            NombreTemporada = "Primavera"
-                        },
-                        new
-                        {
-                            TemporadaID = 2,
-                            NombreTemporada = "Verano"
-                        },
-                        new
-                        {
-                            TemporadaID = 3,
-                            NombreTemporada = "Otoño"
-                        },
-                        new
-                        {
-                            TemporadaID = 4,
-                            NombreTemporada = "Invierno"
-                        });
                 });
 
             modelBuilder.Entity("CropMonitor.Models.AppMovil.TipsCultivo", b =>
