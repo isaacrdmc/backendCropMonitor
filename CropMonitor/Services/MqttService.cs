@@ -162,8 +162,9 @@ namespace CropMonitor.Services
 
                 // 
                 await _mqttClient.ConnectAsync(options);
-            
-            }catch (Exception ex)
+
+            }
+            catch (Exception ex)
             {
                 _logger.LogError(ex, $"Error al iniciar el servicio MQTT: {ex.Message}");
 
@@ -198,7 +199,7 @@ namespace CropMonitor.Services
         private async Task SaveReading(string topic, string payload)
         {
             // Creamos un bucle para manejar la conexión a la base de datos:
-            
+
             const int maxAttempts = 3;
 
             for (int attemp = 1; attemp < maxAttempts; attemp++)
@@ -234,7 +235,7 @@ namespace CropMonitor.Services
 
                         "valor-sonico" => 17,
 
-                        _ => 0      // Ignoramos los valores que no necesitmaos guardar
+                        _ => 0
                     };
 
                     // 
@@ -277,7 +278,8 @@ namespace CropMonitor.Services
                     if (attemp == maxAttempts)
                     {
                         _logger.LogError($"Fallo persistente al guardar la lectura después de {maxAttempts} intentos.");
-                    } else
+                    }
+                    else
                     {
                         // Esperamos un poco antes de reintentar
                         await Task.Delay(TimeSpan.FromSeconds(2 * attemp));
@@ -288,8 +290,8 @@ namespace CropMonitor.Services
 
 
         }
-    
-    
+
+
         // Metodo para publicar comandos a la ESP32:
         public async Task PublicarComando(string topic, string mensaje)
         {
@@ -306,16 +308,18 @@ namespace CropMonitor.Services
                     // 
                     await _mqttClient.PublishAsync(message);
                     Console.WriteLine($"## Comando publicado: {topic} - {mensaje} ###");
-                } else
+                }
+                else
                 {
                     Console.WriteLine("## No conectado al broker, no se puede publicar ##");
                 }
-            } catch(Exception ex)
+            }
+            catch (Exception ex)
             {
                 Console.WriteLine($"## No conectado al broker, no se puede publicar ###");
             }
         }
-    
+
     }
 }
 
